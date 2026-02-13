@@ -169,10 +169,13 @@ export default function RadialOrbitalTimeline({
 
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
-    // Larger radius for desktop, smaller for mobile
+    // Circle radius (for the visible ring)
+    const circleRadius = isDesktop ? 320 : 200;
     // Icon sizes: mobile w-10 h-10 (40px), desktop w-14 h-14 (56px)
-    // Ring should pass through center of icons, so radius matches icon center position
-    const radius = isDesktop ? 320 : 200;
+    const iconSize = isDesktop ? 56 : 40;
+    // Position icons outside the circle - add half icon size plus some padding
+    const iconOffset = iconSize / 2 + 10; // 10px padding outside the circle
+    const radius = circleRadius + iconOffset; // Icons sit outside the circle
     const radian = (angle * Math.PI) / 180;
 
     const x = radius * Math.cos(radian) + centerOffset.x;
@@ -286,8 +289,12 @@ export default function RadialOrbitalTimeline({
             const isPulsing = pulseEffect[item.id];
             const Icon = item.icon || Zap;
 
+            // Calculate icon size to center it properly
+            const iconSize = isDesktop ? 56 : 40; // w-14 h-14 = 56px, w-10 h-10 = 40px
+            const iconOffset = iconSize / 2;
+            
             const nodeStyle = {
-              transform: `translate(${position.x}px, ${position.y}px)`,
+              transform: `translate(calc(50% + ${position.x}px - ${iconOffset}px), calc(50% + ${position.y}px - ${iconOffset}px))`,
               transformOrigin: 'center center',
               zIndex: isExpanded ? 200 : position.zIndex,
               opacity: isExpanded ? 1 : position.opacity,

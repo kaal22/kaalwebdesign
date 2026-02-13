@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 
 interface InkSwirlProps {
   className?: string;
@@ -16,8 +15,8 @@ const InkSwirl: React.FC<InkSwirlProps> = ({ className = '' }) => {
     size: number;
     life: number;
     maxLife: number;
-    angle: number;
-    angularVelocity: number;
+    color: string;
+    brightness: number;
   }>>([]);
   const animationFrameRef = useRef<number>();
 
@@ -36,24 +35,45 @@ const InkSwirl: React.FC<InkSwirlProps> = ({ className = '' }) => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Mouse tracking
+    // Mouse tracking - create long spark trails (throttled)
+    let lastMouseMoveTime = 0;
+    const throttleDelay = 50; // Only create sparks every 50ms (half the frequency)
+    
     const handleMouseMove = (e: MouseEvent) => {
+      const now = Date.now();
+      if (now - lastMouseMoveTime < throttleDelay) {
+        return; // Skip if too soon since last spark creation
+      }
+      lastMouseMoveTime = now;
+      
       setMousePos({ x: e.clientX, y: e.clientY });
       
-      // Create new particles at mouse position - fluid ink effect
-      for (let i = 0; i < 2; i++) {
+      // Create fewer particles - reduced by half
+      const sparkCount = Math.random() * 2 + 1.5; // 1.5-3.5 sparks per movement (rounded down)
+      for (let i = 0; i < Math.floor(sparkCount); i++) {
+        // Random angle for spark direction - more spread out
         const angle = Math.random() * Math.PI * 2;
-        const speed = (Math.random() * 0.2 + 0.08) * 0.5; // Very slow initial speed
+        // Slow initial velocity for long trails
+        const speed = (Math.random() * 0.8 + 0.3) * 0.5; // Very slow: 0.15-0.55 pixels per frame
+        
+        // Only orange and white sparks
+        const colorOptions = [
+          { color: '#FFFFFF', brightness: 0.9 }, // White
+          { color: '#FF6B00', brightness: 0.8 },  // Kaal accent orange
+          { color: '#FF9800', brightness: 0.7 },  // Bright orange
+        ];
+        const selectedColor = colorOptions[Math.floor(Math.random() * colorOptions.length)];
+        
         particlesRef.current.push({
-          x: e.clientX,
-          y: e.clientY,
+          x: e.clientX + (Math.random() - 0.5) * 8, // Slight random offset
+          y: e.clientY + (Math.random() - 0.5) * 8,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          size: Math.random() * 30 + 25,
+          size: Math.random() * 4 + 2, // Slightly larger sparks: 2-6px
           life: 0,
-          maxLife: Math.random() * 120 + 180, // Longer lifetime for ink effect
-          angle: Math.random() * Math.PI * 2,
-          angularVelocity: (Math.random() - 0.5) * 0.003 // Very slow rotation
+          maxLife: Math.random() * 200 + 300, // Long lifetime: 300-500 frames for trails
+          color: selectedColor.color,
+          brightness: selectedColor.brightness
         });
       }
     };
@@ -65,65 +85,57 @@ const InkSwirl: React.FC<InkSwirlProps> = ({ className = '' }) => {
       // Clear canvas with transparent background
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Update and draw particles with fluid ink dissipation
+      // Update and draw spark trails
       particlesRef.current = particlesRef.current.filter(particle => {
-        // Fluid-like motion - particles spread outward and swirl
         particle.life++;
         
-        // Update angle for swirling motion
-        particle.angle += particle.angularVelocity;
+        // Very slow movement with slight gravity
+        particle.vy += 0.02; // Minimal gravity
         
-        // Create flowing, organic movement like ink in water
-        const flowAngle = particle.life * 0.004 + particle.angle; // Very slow flow
-        const flowStrength = 0.02 * (1 - particle.life / particle.maxLife); // Minimal flow strength
-        
-        // Add curl-like flow pattern (simulating fluid dynamics)
-        const curlX = Math.cos(flowAngle) * flowStrength;
-        const curlY = Math.sin(flowAngle) * flowStrength;
-        
-        // Update velocity with flow
-        particle.vx += curlX;
-        particle.vy += curlY;
-        
-        // Decay velocity gradually (like viscosity) - very slow decay for smooth trails
-        particle.vx *= 0.995;
-        particle.vy *= 0.995;
+        // Very slow velocity decay (maintains trail)
+        particle.vx *= 0.99;
+        particle.vy *= 0.99;
         
         // Update position
         particle.x += particle.vx;
         particle.y += particle.vy;
         
-        // Gradually increase size as ink spreads (like diffusion)
-        const spreadFactor = 1 + (particle.life / particle.maxLife) * 0.5;
-        const currentSize = particle.size * spreadFactor;
-
-        // Fade out as life increases
-        const alpha = 1 - Math.pow(particle.life / particle.maxLife, 1.5);
+        // Gradual fade out for long trails
+        const lifeRatio = particle.life / particle.maxLife;
+        const alpha = (1 - Math.pow(lifeRatio, 0.8)) * particle.brightness;
         
         if (alpha <= 0) return false;
 
-        // Draw ink swirl effect with more organic shape
+        // Draw spark with long trail glow effect
+        // Create radial gradient for spark glow
         const gradient = ctx.createRadialGradient(
           particle.x, particle.y, 0,
-          particle.x, particle.y, currentSize
+          particle.x, particle.y, particle.size * 4
         );
         
-        // Orange accent color with smooth fade
-        gradient.addColorStop(0, `rgba(255, 107, 0, ${alpha * 0.4})`);
-        gradient.addColorStop(0.2, `rgba(255, 77, 26, ${alpha * 0.25})`);
-        gradient.addColorStop(0.5, `rgba(255, 107, 0, ${alpha * 0.15})`);
-        gradient.addColorStop(0.8, `rgba(139, 69, 19, ${alpha * 0.08})`);
+        // Bright center with gradual fade for trail effect
+        const hexAlpha = Math.floor(alpha * 255).toString(16).padStart(2, '0');
+        const hexAlphaHalf = Math.floor(alpha * 0.5 * 255).toString(16).padStart(2, '0');
+        const hexAlphaQuarter = Math.floor(alpha * 0.25 * 255).toString(16).padStart(2, '0');
+        
+        gradient.addColorStop(0, `${particle.color}${hexAlpha}`);
+        gradient.addColorStop(0.3, `${particle.color}${hexAlphaHalf}`);
+        gradient.addColorStop(0.7, `${particle.color}${hexAlphaQuarter}`);
         gradient.addColorStop(1, 'transparent');
 
         ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, currentSize, 0, Math.PI * 2);
+        ctx.arc(particle.x, particle.y, particle.size * 4, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Draw bright core spark
+        ctx.fillStyle = `${particle.color}${hexAlpha}`;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size * 0.6, 0, Math.PI * 2);
         ctx.fill();
 
         return true;
       });
-
-      // No automatic background swirls - only cursor-following trail
 
       animationFrameRef.current = requestAnimationFrame(animate);
     };

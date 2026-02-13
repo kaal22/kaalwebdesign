@@ -7,7 +7,7 @@ import Problem from './components/Problem';
 import SignatureWork from './components/SignatureWork';
 import ProcessTimeline from './components/ProcessTimeline';
 import Services from './components/Services';
-import Testimonials from './components/Testimonials';
+import Testimonials3D from './components/Testimonials3D';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
@@ -66,7 +66,7 @@ const App: React.FC = () => {
               <h2 className="text-5xl md:text-6xl font-display font-bold leading-[1.1] mb-8">
                 Design Should Feel <span className="text-kaal-accent italic">Intentional</span>.
               </h2>
-              <p className="text-kaal-muted text-xl leading-relaxed mb-10">
+              <p className="text-kaal-muted text-xl font-body leading-relaxed mb-10">
                 Founded by design obsessives, Kaal was built to solve a single problem: the digital landscape is loud but generic. We help ambitious brands break through the noise by building high-performance sites that don&apos;t just look like art—they convert like machines.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -84,8 +84,8 @@ const App: React.FC = () => {
                     whileHover={{ y: -5, scale: 1.02 }}
                     className="glass p-6 rounded-2xl cursor-pointer z-[3]"
                   >
-                    <span className="block font-bold mb-2">{item.title}</span>
-                    <p className="text-xs text-kaal-muted">{item.desc}</p>
+                    <span className="block font-display font-bold mb-2">{item.title}</span>
+                    <p className="text-xs text-kaal-muted font-body">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
@@ -144,7 +144,7 @@ const App: React.FC = () => {
 
         {/* Chapter 6: The Proof */}
         <StoryChapter chapterNumber={6} title="The Proof" showTitle={false}>
-          <Testimonials />
+          <Testimonials3D />
         </StoryChapter>
 
         {/* Chapter 7: The Call */}

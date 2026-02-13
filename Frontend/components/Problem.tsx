@@ -97,7 +97,7 @@ const Problem: React.FC = () => {
               </motion.div>
 
               <h3 className="text-2xl font-display font-bold mb-4 group-hover:text-white transition-colors">{p.title}</h3>
-              <p className="text-kaal-muted leading-relaxed group-hover:text-white/80 transition-colors">{p.desc}</p>
+              <p className="text-kaal-muted font-body leading-relaxed group-hover:text-white/80 transition-colors">{p.desc}</p>
             </motion.div>
           ))}
         </div>

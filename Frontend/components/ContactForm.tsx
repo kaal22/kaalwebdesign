@@ -40,7 +40,7 @@ const ContactForm: React.FC = () => {
                 </div>
                 <div>
                   <span className="block text-xs uppercase tracking-widest text-kaal-muted font-bold">Email</span>
-                  <span className="text-lg font-bold">hello@kaal.studio</span>
+                  <span className="text-lg font-body font-bold">hello@kaal.studio</span>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -49,7 +49,7 @@ const ContactForm: React.FC = () => {
                 </div>
                 <div>
                   <span className="block text-xs uppercase tracking-widest text-kaal-muted font-bold">Response Time</span>
-                  <span className="text-lg font-bold">Under 24 Hours</span>
+                  <span className="text-lg font-body font-bold">Under 24 Hours</span>
                 </div>
               </div>
             </div>
@@ -74,10 +74,10 @@ const ContactForm: React.FC = () => {
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
                   </div>
                   <h3 className="text-3xl font-display font-bold mb-4">Message Sent!</h3>
-                  <p className="text-kaal-muted">Thank you for reaching out. I'll be in touch very soon.</p>
+                  <p className="text-kaal-muted font-body">Thank you for reaching out. I'll be in touch very soon.</p>
                   <button 
                     onClick={() => setFormState('idle')}
-                    className="mt-8 text-kaal-accent font-bold hover:underline"
+                    className="mt-8 text-kaal-accent font-body font-bold hover:underline"
                   >
                     Send another message
                   </button>
@@ -141,7 +141,7 @@ const ContactForm: React.FC = () => {
                       </>
                     ) : 'Send Message'}
                   </button>
-                  <p className="text-center text-xs text-kaal-muted font-medium pt-4">
+                  <p className="text-center text-xs text-kaal-muted font-body font-medium pt-4">
                     No obligation. Free strategy assessment.
                   </p>
                 </motion.form>

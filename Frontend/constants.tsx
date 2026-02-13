@@ -63,21 +63,42 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Daniel Reed',
     role: 'Founder, Nexus',
     content: "Kaal didn't just redesign our site; they rebuilt our authority. Our conversion metrics jumped immediately after launch.",
-    avatar: 'https://picsum.photos/seed/person1/100/100'
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
   },
   {
     id: '2',
     name: 'Sarah Chen',
     role: 'CEO, Aura',
     content: "The level of intentionality in every pixel is insane. They understand the intersection of beauty and business.",
-    avatar: 'https://picsum.photos/seed/person2/100/100'
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop'
   },
   {
     id: '3',
     name: 'Marcus Thorne',
     role: 'Product Lead, Vortex',
     content: "Best creative partner we've ever worked with. They challenged our assumptions and delivered something truly cinematic.",
-    avatar: 'https://picsum.photos/seed/person3/100/100'
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop'
+  },
+  {
+    id: '4',
+    name: 'Elena Rodriguez',
+    role: 'CTO, Kinetik AI',
+    content: "From concept to launch in 4 weeks. The speed and quality they deliver is unmatched. Our user engagement doubled.",
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop'
+  },
+  {
+    id: '5',
+    name: 'James Park',
+    role: 'Founder, TechFlow',
+    content: "They transformed our brand identity completely. The new site doesn't just look premium—it converts like a machine.",
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop'
+  },
+  {
+    id: '6',
+    name: 'Amara Singh',
+    role: 'Head of Design, InnovateLab',
+    content: "Working with Kaal was a masterclass in design thinking. Every interaction feels intentional, every pixel purposeful.",
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop'
   }
 ];
 

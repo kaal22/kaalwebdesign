@@ -46,7 +46,7 @@ const Services: React.FC = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-kaal-success opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-kaal-success"></span>
               </span>
-              <p className="text-kaal-text font-bold text-sm tracking-widest uppercase">Available for projects</p>
+              <p className="text-kaal-text font-body font-bold text-sm tracking-widest uppercase">Available for projects</p>
             </div>
             <span className="text-xs text-kaal-muted uppercase tracking-widest">Q3 Openings Remaining</span>
           </div>
@@ -70,12 +70,12 @@ const Services: React.FC = () => {
             >
               <div className="glass h-full p-10 rounded-[22px] flex flex-col bg-transparent backtrop-blur-xl z-[3]">
                 <h3 className="text-3xl font-display font-bold mb-6 group-hover:text-kaal-accent transition-colors">{s.title}</h3>
-                <p className="text-kaal-muted leading-relaxed mb-12 flex-grow text-lg">
+                <p className="text-kaal-muted font-body leading-relaxed mb-12 flex-grow text-lg">
                   {s.description}
                 </p>
                 <div className="pt-8 border-t border-kaal-border mt-auto">
                   <div className="flex items-end justify-between mb-8">
-                    <span className="block text-kaal-text font-bold text-lg">Starting at</span>
+                    <span className="block text-kaal-text font-body font-bold text-lg">Starting at</span>
                     <span className="block text-kaal-accent font-display font-bold text-2xl">{s.price}</span>
                   </div>
                   <a

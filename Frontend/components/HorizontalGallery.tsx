@@ -73,17 +73,17 @@ const HorizontalGallery: React.FC = () => {
                       <h3 className="text-3xl md:text-4xl font-display font-bold">{project.title}</h3>
                     </div>
                     <div className="text-right">
-                      <span className="text-2xl md:text-3xl font-bold font-sora text-kaal-success">{project.result}</span>
+                      <span className="text-2xl md:text-3xl font-display font-bold text-kaal-success">{project.result}</span>
                       <p className="text-[10px] text-kaal-muted uppercase tracking-widest mt-1">Growth Outcome</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="mt-6">
-                <p className="text-kaal-muted text-lg leading-relaxed max-w-lg mb-6">
+                <p className="text-kaal-muted text-lg font-body leading-relaxed max-w-lg mb-6">
                   {project.description}
                 </p>
-                <button className="flex items-center gap-2 group/btn text-kaal-text font-bold uppercase tracking-widest text-sm hover:text-kaal-accent transition-colors">
+                <button className="flex items-center gap-2 group/btn text-kaal-text font-body font-bold uppercase tracking-widest text-sm hover:text-kaal-accent transition-colors">
                   View Case Study
                   <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-2" />
                 </button>

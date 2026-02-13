@@ -38,7 +38,7 @@ const ProcessTimeline: React.FC = () => {
           <h2 className="text-5xl md:text-7xl font-display font-bold mb-6">
             The Path to <span className="text-kaal-accent">Clarity</span>.
           </h2>
-          <p className="text-kaal-muted text-xl max-w-2xl mx-auto">
+          <p className="text-kaal-muted text-xl font-body max-w-2xl mx-auto">
             Our proven formula for turning generic brands into market leaders.
           </p>
         </motion.div>
@@ -68,7 +68,7 @@ const ProcessTimeline: React.FC = () => {
                   <div className={`flex flex-col ${idx % 2 === 0 ? 'md:items-end md:text-right' : 'md:items-start md:text-left'} px-0 md:px-16`}>
                     <span className="text-kaal-accent text-6xl font-display font-bold opacity-20 mb-2">{step.number}</span>
                     <h3 className="text-3xl font-display font-bold mb-4">{step.title}</h3>
-                    <p className="text-kaal-muted leading-relaxed max-w-md">
+                    <p className="text-kaal-muted font-body leading-relaxed max-w-md">
                       {step.description}
                     </p>
                   </div>
