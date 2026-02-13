@@ -170,6 +170,8 @@ export default function RadialOrbitalTimeline({
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
     // Larger radius for desktop, smaller for mobile
+    // Icon sizes: mobile w-10 h-10 (40px), desktop w-14 h-14 (56px)
+    // Ring should pass through center of icons, so radius matches icon center position
     const radius = isDesktop ? 320 : 200;
     const radian = (angle * Math.PI) / 180;
 
@@ -182,7 +184,7 @@ export default function RadialOrbitalTimeline({
       Math.min(1, 0.4 + 0.6 * ((1 + Math.sin(radian)) / 2))
     );
 
-    return { x, y, angle, zIndex, opacity };
+    return { x, y, angle, zIndex, opacity, radius };
   };
 
   const getRelatedItems = (itemId: string): string[] => {
@@ -254,8 +256,28 @@ export default function RadialOrbitalTimeline({
             <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/80 backdrop-blur-md"></div>
           </motion.div>
 
-          {/* Orbital Ring */}
-          <div className="absolute w-96 h-96 md:w-[640px] md:h-[640px] rounded-full border border-white/10"></div>
+          {/* Orbital Ring - SVG for precise positioning through icon centers */}
+          {/* Icons are centered at radius 200px (mobile) or 320px (desktop) */}
+          <svg
+            className="absolute"
+            style={{
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: `${isDesktop ? 640 : 400}px`,
+              height: `${isDesktop ? 640 : 400}px`,
+            }}
+            viewBox={`0 0 ${isDesktop ? 640 : 400} ${isDesktop ? 640 : 400}`}
+          >
+            <circle
+              cx={isDesktop ? 320 : 200}
+              cy={isDesktop ? 320 : 200}
+              r={isDesktop ? 320 : 200}
+              fill="none"
+              stroke="rgba(255, 255, 255, 0.1)"
+              strokeWidth="1"
+            />
+          </svg>
 
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
@@ -266,6 +288,7 @@ export default function RadialOrbitalTimeline({
 
             const nodeStyle = {
               transform: `translate(${position.x}px, ${position.y}px)`,
+              transformOrigin: 'center center',
               zIndex: isExpanded ? 200 : position.zIndex,
               opacity: isExpanded ? 1 : position.opacity,
             };
