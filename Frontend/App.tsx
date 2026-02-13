@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import StoryChapter from './components/StoryChapter';
 import InkSwirl from './components/InkSwirl';
+import CustomCursor from './components/CustomCursor';
 
 const App: React.FC = () => {
   // Simple smooth scroll behavior
@@ -35,6 +36,9 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen font-body selection:bg-kaal-accent selection:text-white relative bg-[#000000]">
+      {/* Custom Cursor - Desktop Only */}
+      <CustomCursor />
+      
       {/* Site-wide Ink Swirl Background - Cursor Trail Only */}
       <div className="fixed inset-0 w-full h-full z-[1] pointer-events-none">
         <InkSwirl />

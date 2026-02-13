@@ -217,26 +217,28 @@ export default function RadialOrbitalTimeline({
   return (
     <section
       id="work"
-      className="relative w-full min-h-screen flex flex-col items-center justify-center bg-transparent overflow-hidden py-24"
+      className="relative w-full min-h-screen bg-transparent overflow-hidden py-24 px-6 md:px-12"
       ref={containerRef}
       onClick={handleContainerClick}
     >
-      {/* Section Title */}
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="absolute top-12 left-6 md:left-12 z-20"
-      >
-        <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tighter">
-          Signature <span className="text-kaal-accent">Work</span>
-        </h2>
-        <p className="text-kaal-muted text-sm uppercase tracking-widest mt-4">
-          Explore our portfolio →
-        </p>
-      </motion.div>
+      <div className="max-w-7xl mx-auto w-full">
+        {/* Section Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative z-20 mb-16 md:mb-24"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold tracking-tighter">
+            Signature <span className="text-kaal-accent">Work</span>
+          </h2>
+          <p className="text-kaal-muted text-xs sm:text-sm font-body uppercase tracking-widest mt-2 sm:mt-4">
+            Explore our portfolio →
+          </p>
+        </motion.div>
 
-      <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
+        <div className="relative w-full max-w-4xl mx-auto min-h-[400px] sm:min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-visible">
         <div
           className="absolute w-full h-full flex items-center justify-center"
           ref={orbitRef}
@@ -472,6 +474,7 @@ export default function RadialOrbitalTimeline({
               </div>
             );
           })}
+        </div>
         </div>
       </div>
 

@@ -22,7 +22,7 @@ const Testimonials3D: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="relative z-[3]">
+        <div className="relative z-[3] h-[400px] md:h-[600px]">
           <ThreeDTestimonialCarousel testimonials={TESTIMONIALS} />
         </div>
 

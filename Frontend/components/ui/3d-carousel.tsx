@@ -165,33 +165,33 @@ const Carousel = memo(
             >
               <motion.div
                 layoutId={`testimonial-${testimonial.id}`}
-                className="pointer-events-auto w-full max-w-md rounded-3xl bg-black/60 border border-white/20 backdrop-blur-xl p-8 hover:border-kaal-accent/50 transition-colors cursor-pointer"
+                className="pointer-events-auto w-full max-w-md rounded-3xl bg-black/60 border border-white/20 backdrop-blur-xl p-4 sm:p-6 md:p-8 hover:border-kaal-accent/50 transition-colors cursor-pointer"
                 initial={{ filter: "blur(4px)", opacity: 0.7 }}
                 animate={{ filter: "blur(0px)", opacity: 1 }}
                 transition={transition}
               >
                 {/* Stars */}
-                <div className="flex gap-1 mb-6 text-kaal-accent">
+                <div className="flex gap-1 mb-4 sm:mb-6 text-kaal-accent">
                   {[...Array(5)].map((_, idx) => (
-                    <Star key={idx} size={16} fill="currentColor" />
+                    <Star key={idx} size={14} className="sm:w-4 sm:h-4" fill="currentColor" />
                   ))}
                 </div>
 
                 {/* Content */}
-                <p className="text-kaal-text text-lg font-body italic leading-relaxed mb-8">
+                <p className="text-kaal-text text-sm sm:text-base md:text-lg font-body italic leading-relaxed mb-4 sm:mb-6 md:mb-8">
                   "{testimonial.content}"
                 </p>
 
                 {/* Author */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
                   <img 
                     src={testimonial.avatar} 
                     alt={testimonial.name} 
-                    className="w-12 h-12 rounded-full object-cover border border-white/10" 
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border border-white/10" 
                   />
                   <div>
-                    <h4 className="font-display font-bold text-lg leading-none text-white">{testimonial.name}</h4>
-                    <p className="text-kaal-muted text-sm font-body font-medium mt-1">{testimonial.role}</p>
+                    <h4 className="font-display font-bold text-sm sm:text-base md:text-lg leading-none text-white">{testimonial.name}</h4>
+                    <p className="text-kaal-muted text-xs sm:text-sm font-body font-medium mt-1">{testimonial.role}</p>
                   </div>
                 </div>
               </motion.div>
@@ -246,13 +246,13 @@ function ThreeDTestimonialCarousel({ testimonials }: { testimonials: Testimonial
             layoutId={`testimonial-container-${activeTestimonial.id}`}
             layout="position"
             onClick={handleClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 m-5 md:m-36 lg:mx-[19rem] rounded-3xl"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 m-2 sm:m-5 md:m-36 lg:mx-[19rem] rounded-3xl"
             style={{ willChange: "opacity" }}
             transition={transitionOverlay}
           >
             <motion.div
               layoutId={`testimonial-${activeTestimonial.id}`}
-              className="max-w-2xl w-full rounded-3xl bg-black/70 border border-white/30 backdrop-blur-xl p-10 relative"
+              className="max-w-2xl w-full rounded-3xl bg-black/70 border border-white/30 backdrop-blur-xl p-6 sm:p-8 md:p-10 mx-4 relative"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               transition={{
@@ -332,7 +332,7 @@ function ThreeDTestimonialCarousel({ testimonials }: { testimonials: Testimonial
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="relative h-[600px] w-full overflow-hidden">
+      <div className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full overflow-hidden">
         <Carousel
           handleClick={handleClick}
           controls={controls}
