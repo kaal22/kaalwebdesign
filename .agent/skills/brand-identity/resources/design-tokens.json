@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "brand_name": "Kaal",
+    "description": "High-impact, dark-mode-first design system with vibrant orange accents."
+  },
+  "colors": {
+    "primary": {
+      "DEFAULT": "#FF6B00",
+      "hover": "#E65A00",
+      "foreground": "#FFFFFF"
+    },
+    "secondary": {
+      "DEFAULT": "#18181B",
+      "foreground": "#FAFAFA"
+    },
+    "background": "#050505",
+    "foreground": "#FAFAFA",
+    "card": {
+      "DEFAULT": "#0A0A0A",
+      "foreground": "#FAFAFA"
+    },
+    "muted": {
+      "DEFAULT": "#27272A",
+      "foreground": "#A1A1AA"
+    },
+    "accent": {
+      "DEFAULT": "#FF6B00",
+      "glow": "rgba(255, 107, 0, 0.15)"
+    },
+    "destructive": "#EF4444",
+    "border": "#27272A"
+  },
+  "typography": {
+    "font_family_headings": ["Syne", "Inter", "sans-serif"],
+    "font_family_body": ["Inter", "sans-serif"],
+    "font_weight_headings": "800",
+    "font_weight_body": "400",
+    "line_height_headings": "1.1",
+    "tracking_headings": "-0.02em"
+  },
+  "ui": {
+    "border_radius_default": "0.25rem",
+    "border_radius_buttons": "0px",
+    "spacing_container_padding": "2rem",
+    "grid_gap_default": "1.5rem"
+  }
+}
