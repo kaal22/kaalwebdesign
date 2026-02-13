@@ -37,43 +37,38 @@ const InkSwirl: React.FC<InkSwirlProps> = ({ className = '' }) => {
 
     // Mouse tracking - create long spark trails (throttled)
     let lastMouseMoveTime = 0;
-    const throttleDelay = 50; // Only create sparks every 50ms (half the frequency)
+    const throttleDelay = 25; // Create sparks more frequently for denser trails
     
     const handleMouseMove = (e: MouseEvent) => {
       const now = Date.now();
       if (now - lastMouseMoveTime < throttleDelay) {
-        return; // Skip if too soon since last spark creation
+        return;
       }
       lastMouseMoveTime = now;
       
       setMousePos({ x: e.clientX, y: e.clientY });
       
-      // Create fewer particles - reduced by half
-      const sparkCount = Math.random() * 2 + 1.5; // 1.5-3.5 sparks per movement (rounded down)
+      // More sparks per movement with higher dispersion
+      const sparkCount = Math.random() * 6 + 6; // 6–12 sparks per movement
       for (let i = 0; i < Math.floor(sparkCount); i++) {
-        // Random angle for spark direction - more spread out
+        // Full 360° random angle for wide dispersion
         const angle = Math.random() * Math.PI * 2;
-        // Slow initial velocity for long trails
-        const speed = (Math.random() * 0.8 + 0.3) * 0.5; // Very slow: 0.15-0.55 pixels per frame
+        // Variable speed for more spread (some fast, some slow)
+        const speed = (Math.random() * 1.2 + 0.4) * 0.6; // 0.24–0.96 px/frame
         
-        // Only orange and white sparks
-        const colorOptions = [
-          { color: '#FFFFFF', brightness: 0.9 }, // White
-          { color: '#FF6B00', brightness: 0.8 },  // Kaal accent orange
-          { color: '#FF9800', brightness: 0.7 },  // Bright orange
-        ];
-        const selectedColor = colorOptions[Math.floor(Math.random() * colorOptions.length)];
+        // All white sparks
+        const brightness = 0.85 + Math.random() * 0.15;
         
         particlesRef.current.push({
-          x: e.clientX + (Math.random() - 0.5) * 8, // Slight random offset
-          y: e.clientY + (Math.random() - 0.5) * 8,
+          x: e.clientX + (Math.random() - 0.5) * 28, // Larger random offset for dispersion
+          y: e.clientY + (Math.random() - 0.5) * 28,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          size: Math.random() * 4 + 2, // Slightly larger sparks: 2-6px
+          size: Math.random() * 4 + 2,
           life: 0,
-          maxLife: Math.random() * 200 + 300, // Long lifetime: 300-500 frames for trails
-          color: selectedColor.color,
-          brightness: selectedColor.brightness
+          maxLife: Math.random() * 200 + 350,
+          color: '#FFFFFF',
+          brightness
         });
       }
     };

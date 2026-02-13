@@ -31,9 +31,9 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-bold leading-[0.85] md:leading-[0.85] tracking-tight text-white text-left text-[clamp(3.5rem,22vw,10rem)] sm:text-[clamp(4.5rem,20vw,12rem)] md:text-[10rem] lg:text-[14rem] xl:text-[16rem]"
+            className="font-display font-bold leading-[0.75] md:leading-[0.8] tracking-tight text-white text-left text-[clamp(3.5rem,22vw,10rem)] sm:text-[clamp(4.5rem,20vw,12rem)] md:text-[10rem] lg:text-[14rem] xl:text-[16rem]"
           >
-            <span className="block overflow-hidden">
+            <span className="block overflow-hidden -mb-2 md:-mb-4">
               <motion.span
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
