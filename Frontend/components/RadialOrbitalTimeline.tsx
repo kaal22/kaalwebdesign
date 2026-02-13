@@ -40,9 +40,20 @@ export default function RadialOrbitalTimeline({
   const [activeNodeId, setActiveNodeId] = useState<string | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [previewPosition, setPreviewPosition] = useState<{ x: number; y: number } | null>(null);
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  // Track window size for responsive radius
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === containerRef.current || e.target === orbitRef.current) {
@@ -158,7 +169,8 @@ export default function RadialOrbitalTimeline({
 
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
-    const radius = 200;
+    // Larger radius for desktop, smaller for mobile
+    const radius = isDesktop ? 320 : 200;
     const radian = (angle * Math.PI) / 180;
 
     const x = radius * Math.cos(radian) + centerOffset.x;
@@ -230,20 +242,20 @@ export default function RadialOrbitalTimeline({
         >
           {/* Center Core */}
           <motion.div
-            className="absolute w-16 h-16 rounded-full bg-gradient-to-br from-kaal-accent via-orange-500 to-red-500 flex items-center justify-center z-10"
+            className="absolute w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-kaal-accent via-orange-500 to-red-500 flex items-center justify-center z-10"
             animate={{ scale: [1, 1.1, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <div className="absolute w-20 h-20 rounded-full border border-kaal-accent/20 animate-ping opacity-70"></div>
+            <div className="absolute w-20 h-20 md:w-28 md:h-28 rounded-full border border-kaal-accent/20 animate-ping opacity-70"></div>
             <div
-              className="absolute w-24 h-24 rounded-full border border-kaal-accent/10 animate-ping opacity-50"
+              className="absolute w-24 h-24 md:w-36 md:h-36 rounded-full border border-kaal-accent/10 animate-ping opacity-50"
               style={{ animationDelay: "0.5s" }}
             ></div>
-            <div className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-md"></div>
+            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/80 backdrop-blur-md"></div>
           </motion.div>
 
           {/* Orbital Ring */}
-          <div className="absolute w-96 h-96 rounded-full border border-white/10"></div>
+          <div className="absolute w-96 h-96 md:w-[640px] md:h-[640px] rounded-full border border-white/10"></div>
 
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
@@ -288,7 +300,7 @@ export default function RadialOrbitalTimeline({
                 {/* Node Icon */}
                 <motion.div
                   className={`
-                  w-10 h-10 rounded-full flex items-center justify-center
+                  w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center
                   ${
                     isExpanded
                       ? "bg-kaal-accent text-white"
@@ -309,7 +321,7 @@ export default function RadialOrbitalTimeline({
                 `}
                   whileHover={{ scale: 1.2 }}
                 >
-                  <Icon size={16} />
+                  <Icon size={isDesktop ? 20 : 16} />
                 </motion.div>
 
                 {/* Node Title */}
