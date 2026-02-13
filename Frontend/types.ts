@@ -1,11 +1,18 @@
 
+import { LucideIcon } from 'lucide-react';
+
 export interface Project {
   id: string;
   title: string;
   category: string;
   result: string;
   image: string;
+  previewImage?: string;
   description: string;
+  icon?: LucideIcon;
+  relatedIds?: string[];
+  status?: 'completed' | 'in-progress' | 'pending';
+  energy?: number;
 }
 
 export interface Testimonial {

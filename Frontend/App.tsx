@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Problem from './components/Problem';
-import HorizontalGallery from './components/HorizontalGallery';
+import SignatureWork from './components/SignatureWork';
 import ProcessTimeline from './components/ProcessTimeline';
 import Services from './components/Services';
 import Testimonials from './components/Testimonials';
@@ -129,7 +129,7 @@ const App: React.FC = () => {
 
         {/* Chapter 3: The Work */}
         <StoryChapter chapterNumber={3} title="The Work" showTitle={false}>
-          <HorizontalGallery />
+          <SignatureWork />
         </StoryChapter>
 
         {/* Chapter 4: The Process */}

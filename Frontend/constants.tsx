@@ -1,5 +1,6 @@
 
 import { Project, Testimonial, Service, ProcessStep } from './types';
+import { Code, Zap, Building2, Rocket, Link2, TrendingUp, DollarSign, Users } from 'lucide-react';
 
 export const PROJECTS: Project[] = [
   {
@@ -7,32 +8,52 @@ export const PROJECTS: Project[] = [
     title: 'Nexus SaaS',
     category: 'Product Strategy & Design',
     result: '+142% Conversion',
-    image: 'https://picsum.photos/seed/nexus/1200/800',
-    description: 'Reimagining the workflow for enterprise data scientists.'
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',
+    previewImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',
+    description: 'Reimagining the workflow for enterprise data scientists.',
+    icon: Code,
+    relatedIds: ['2'],
+    status: 'completed' as const,
+    energy: 100
   },
   {
     id: '2',
     title: 'Aura Fintech',
     category: 'Visual Identity & Web',
     result: '$4M Seed Raised',
-    image: 'https://picsum.photos/seed/aura/1200/800',
-    description: 'A cinematic brand reveal for the future of digital banking.'
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
+    previewImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
+    description: 'A cinematic brand reveal for the future of digital banking.',
+    icon: Building2,
+    relatedIds: ['1', '3'],
+    status: 'completed' as const,
+    energy: 95
   },
   {
     id: '3',
     title: 'Vortex Studio',
     category: 'Interactive Experience',
     result: '45k Monthly Users',
-    image: 'https://picsum.photos/seed/vortex/1200/800',
-    description: 'Pushing the boundaries of 3D web interaction.'
+    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=800&fit=crop',
+    previewImage: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=800&fit=crop',
+    description: 'Pushing the boundaries of 3D web interaction.',
+    icon: Zap,
+    relatedIds: ['2', '4'],
+    status: 'completed' as const,
+    energy: 90
   },
   {
     id: '4',
     title: 'Kinetik AI',
     category: 'Full Cycle Development',
     result: 'Top 10 AI Tools',
-    image: 'https://picsum.photos/seed/kinetik/1200/800',
-    description: 'From concept to code: Scaling an AI powerhouse.'
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=800&fit=crop',
+    previewImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=800&fit=crop',
+    description: 'From concept to code: Scaling an AI powerhouse.',
+    icon: Rocket,
+    relatedIds: ['3'],
+    status: 'completed' as const,
+    energy: 85
   }
 ];
 
