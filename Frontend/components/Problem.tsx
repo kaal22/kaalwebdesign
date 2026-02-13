@@ -59,13 +59,13 @@ const Problem: React.FC = () => {
           >
             Most websites look fine.<br />
             <motion.span 
-              className="text-kaal-muted"
+              className="text-kaal-accent italic"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              They just don&apos;t perform.
+              They just don&apos;t perform<span className="text-white">.</span>
             </motion.span>
           </motion.h2>
         </motion.div>

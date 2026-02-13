@@ -51,9 +51,35 @@ export const PROJECTS: Project[] = [
     previewImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=800&fit=crop',
     description: 'From concept to code: Scaling an AI powerhouse.',
     icon: Rocket,
-    relatedIds: ['3'],
+    relatedIds: ['3', '5'],
     status: 'completed' as const,
     energy: 85
+  },
+  {
+    id: '5',
+    title: 'Lumina Health',
+    category: 'Brand & Digital Product',
+    result: '2x User Engagement',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=800&fit=crop',
+    previewImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=800&fit=crop',
+    description: 'A calming, conversion-focused experience for a telehealth leader.',
+    icon: TrendingUp,
+    relatedIds: ['4', '6'],
+    status: 'completed' as const,
+    energy: 88
+  },
+  {
+    id: '6',
+    title: 'Atlas Community',
+    category: 'Platform & Community Design',
+    result: '50k+ Active Members',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop',
+    previewImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop',
+    description: 'Building trust and connection through thoughtful UX and bold visual identity.',
+    icon: Users,
+    relatedIds: ['1', '5'],
+    status: 'completed' as const,
+    energy: 82
   }
 ];
 

@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
                 transition={{ duration: 2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 className="block text-kaal-accent"
               >
-                Gravity.
+                Gravity<span className="text-white">.</span>
               </motion.span>
             </span>
           </motion.h1>
