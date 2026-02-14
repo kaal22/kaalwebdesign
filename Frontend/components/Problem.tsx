@@ -42,6 +42,11 @@ const Problem: React.FC = () => {
         className="absolute inset-0 pointer-events-none"
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-kaal-accent/5 rounded-full blur-[120px]" />
+        {/* Fade out glow at bottom so it doesn't cut off */}
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#000000] to-transparent"
+          aria-hidden
+        />
       </motion.div>
 
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
