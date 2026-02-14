@@ -233,8 +233,11 @@ export default function RadialOrbitalTimeline({
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold tracking-tighter">
             Signature <span className="text-kaal-accent">Work</span>
           </h2>
-          <p className="text-kaal-muted text-xs sm:text-sm font-body uppercase tracking-widest mt-2 sm:mt-4">
-            Explore our portfolio →
+          <p className="text-kaal-muted text-sm sm:text-base font-body mt-2 sm:mt-4 max-w-xl">
+            Selected projects built for founders who refuse average.
+          </p>
+          <p className="text-kaal-muted text-xs sm:text-sm font-body mt-1">
+            Crafted with intention. Engineered to perform.
           </p>
         </motion.div>
 

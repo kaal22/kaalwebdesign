@@ -37,7 +37,7 @@ const Services: React.FC = () => {
               Ways to <span className="text-kaal-accent italic">Elevate</span>.
             </h2>
             <p className="text-kaal-muted text-xl max-w-xl leading-relaxed">
-              Focused offerings designed to move the needle for digital brands. No fluff, just impact.
+              Three ways to work together. Clear scope. Clear outcomes.
             </p>
           </motion.div>
           <div className="hidden lg:block text-right">
@@ -75,7 +75,6 @@ const Services: React.FC = () => {
                 </p>
                 <div className="pt-8 border-t border-kaal-border mt-auto">
                   <div className="flex items-end justify-between mb-8">
-                    <span className="block text-kaal-text font-body font-bold text-lg">Starting at</span>
                     <span className="block text-kaal-accent font-display font-bold text-2xl">{s.price}</span>
                   </div>
                   <a

@@ -14,15 +14,18 @@ const Footer: React.FC = () => {
 
         {/* Massive CTA */}
         <div className="mb-20 text-center">
-          <h2 className="text-5xl md:text-8xl font-display font-bold leading-[0.9] mb-8">
+          <h2 className="text-5xl md:text-8xl font-display font-bold leading-[0.9] mb-6">
             Let's build something<br />
             <span className="text-kaal-accent italic">legendary</span>.
           </h2>
+          <p className="text-kaal-muted text-lg md:text-xl font-body mb-8 max-w-md mx-auto">
+            If you're serious about growth, let's talk.
+          </p>
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block bg-white text-black px-12 py-6 rounded-full text-xl font-body font-bold mt-8 hover:bg-kaal-accent hover:text-white transition-colors"
+            className="inline-block bg-white text-black px-12 py-6 rounded-full text-xl font-body font-bold hover:bg-kaal-accent hover:text-white transition-colors"
           >
             Start Your Project
           </motion.a>

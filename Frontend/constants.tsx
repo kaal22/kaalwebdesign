@@ -132,27 +132,27 @@ export const SERVICES: Service[] = [
   {
     id: 'launch-sprint',
     title: 'Launch Sprint',
-    description: 'High-impact 4-week site for startups needing to launch fast without compromising premium design.',
-    price: 'Starting from $6k'
+    description: 'For startups that need immediate impact. High-performance site. Delivered fast. Built to convert. Delivery: 2–3 weeks.',
+    price: 'Starting from £X'
   },
   {
     id: 'redesign-reposition',
     title: 'Redesign & Reposition',
-    description: 'A deep-dive strategic overhaul for established brands ready to scale to the next tier.',
-    price: 'Starting from $12k'
+    description: 'For brands ready to level up. Sharper positioning. Stronger visuals. Smarter UX.',
+    price: 'Starting from £X'
   },
   {
     id: 'design-partner',
     title: 'Design Partner',
-    description: 'Monthly collaboration for growing teams who need high-level design direction on tap.',
-    price: 'Fixed monthly retainer'
+    description: 'Ongoing collaboration. Continuous optimisation. Monthly design support. Conversion improvements. Strategic evolution.',
+    price: 'Retainer model'
   }
 ];
 
 export const PROCESS_STEPS: ProcessStep[] = [
-  { number: '01', title: 'Discover', description: 'We strip away the noise to find your brand’s unique narrative and core business goals.' },
-  { number: '02', title: 'Narrative', description: 'Mapping out the user journey as a cinematic experience with controlled pacing.' },
-  { number: '03', title: 'Design System', description: 'Building a scalable visual language that communicates credibility instantly.' },
-  { number: '04', title: 'Build', description: 'Engineering pixel-perfect, high-performance web experiences using modern tech.' },
-  { number: '05', title: 'Launch', description: 'Deploying your new digital home and optimizing for maximum conversion impact.' }
+  { number: '01', title: 'Discover', description: 'We define your positioning, audience, and objectives.' },
+  { number: '02', title: 'Narrative', description: 'We shape your story into a structured experience.' },
+  { number: '03', title: 'Design System', description: 'Bold visuals. Logical hierarchy. Scalable components.' },
+  { number: '04', title: 'Build', description: 'Fast. Optimised. Clean code. Future-ready.' },
+  { number: '05', title: 'Launch', description: 'Live with confidence. Measured for performance.' }
 ];

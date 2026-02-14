@@ -39,7 +39,7 @@ const ProcessTimeline: React.FC = () => {
             The Path to <span className="text-kaal-accent">Clarity</span>.
           </h2>
           <p className="text-kaal-muted text-xl font-body max-w-2xl mx-auto">
-            Our proven formula for turning generic brands into market leaders.
+            A focused process. No chaos. No guesswork.
           </p>
         </motion.div>
 

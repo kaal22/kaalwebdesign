@@ -30,7 +30,10 @@ const ContactForm: React.FC = () => {
               Let's Build Something <span className="text-kaal-accent">That Matters</span>.
             </h2>
             <p className="text-xl text-kaal-muted mb-12 max-w-lg leading-relaxed">
-              Tell me about your project — I'll respond within 24 hours to schedule a strategy call. No obligation, just a conversation about your goals.
+              Tell me about your project.<br />
+              I personally reply within 24 hours.<br /><br />
+              No middlemen. No account managers.<br />
+              Just direct collaboration.
             </p>
             
             <div className="space-y-6">
@@ -125,7 +128,7 @@ const ContactForm: React.FC = () => {
                     <textarea 
                       required 
                       rows={4}
-                      placeholder="Tell me about your goals..."
+                      placeholder="Tell me about your project..."
                       className="w-full bg-transparent border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-kaal-accent/50 focus:border-kaal-accent transition-all" 
                     ></textarea>
                   </div>
@@ -142,7 +145,7 @@ const ContactForm: React.FC = () => {
                     ) : 'Send Message'}
                   </button>
                   <p className="text-center text-xs text-kaal-muted font-body font-medium pt-4">
-                    No obligation. Free strategy assessment.
+                    No obligation. Just clarity.
                   </p>
                 </motion.form>
               )}

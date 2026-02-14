@@ -54,10 +54,20 @@ const Hero: React.FC = () => {
               </motion.span>
             </span>
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 1 }}
+            className="text-lg sm:text-xl md:text-2xl text-white/80 font-body leading-snug mt-6 md:mt-8 space-y-1"
+          >
+            <span className="block">AI-accelerated design.</span>
+            <span className="block">Human-led strategy.</span>
+            <span className="block">Built to pull users in — and move them to act.</span>
+          </motion.p>
         </div>
       </motion.div>
 
-      {/* Descriptive Text - Bottom Right - Mobile: Below title, Desktop: Bottom right */}
+      {/* Supporting Line - Bottom Right */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -65,42 +75,21 @@ const Hero: React.FC = () => {
         className="absolute top-[calc(100vh-200px)] md:top-auto md:bottom-12 right-6 md:right-6 lg:right-12 left-6 md:left-auto max-w-md md:max-w-md text-left md:text-right z-10"
       >
         <p className="text-base sm:text-lg md:text-base text-white/90 font-body leading-relaxed">
-          The intersection of cinematic aesthetics and conversion engineering. We build digital experiences that feel illegal to <strong className="text-white font-bold">ignore.</strong>
+          Cinematic design. Conversion precision.<br />
+          Built to be impossible to <strong className="text-white font-bold">ignore.</strong>
         </p>
       </motion.div>
 
-      {/* Awards - Bottom Left - Mobile: Below description, Desktop: Bottom left */}
+      {/* Tagline - Bottom Left */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 2.8, duration: 1.5 }}
         className="absolute top-[calc(100vh-100px)] md:top-auto md:bottom-12 left-6 md:left-6 lg:left-12 z-10"
       >
-        <div className="flex flex-col md:flex-row flex-wrap items-start md:items-center gap-4 md:gap-6 lg:gap-8">
-          {/* Award 1 - Awwwards */}
-          <div className="flex flex-col items-start">
-            <div className="text-white/60 text-[10px] sm:text-[10px] uppercase tracking-widest mb-1">Awwwards</div>
-            <div className="text-white text-xs sm:text-xs font-bold">Honorable Mention</div>
-          </div>
-          
-          {/* Award 2 - CSS Design Awards */}
-          <div className="flex flex-col items-start">
-            <div className="text-white/60 text-[10px] sm:text-[10px] uppercase tracking-widest mb-1">CSS Design Awards</div>
-            <div className="text-white text-xs sm:text-xs font-bold">Site of the Day</div>
-          </div>
-          
-          {/* Award 3 - Clutch */}
-          <div className="flex flex-col items-start">
-            <div className="text-white/60 text-[10px] sm:text-[10px] uppercase tracking-widest mb-1">Clutch</div>
-            <div className="text-white text-xs sm:text-xs font-bold">Top Agency 2024</div>
-          </div>
-          
-          {/* Award 4 - FWA */}
-          <div className="flex flex-col items-start">
-            <div className="text-white/60 text-[10px] sm:text-[10px] uppercase tracking-widest mb-1">FWA</div>
-            <div className="text-white text-xs sm:text-xs font-bold">Site of the Day</div>
-          </div>
-        </div>
+        <p className="text-white/90 text-sm sm:text-base font-body uppercase tracking-widest">
+          Solo Designer. Strategic Execution.
+        </p>
       </motion.div>
 
       {/* Scroll Indicator - Center Bottom */}

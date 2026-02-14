@@ -70,14 +70,14 @@ const App: React.FC = () => {
               <h2 className="text-5xl md:text-6xl font-display font-bold leading-[1.1] mb-8">
                 Design Should Feel <span className="text-kaal-accent italic">Intentional</span>.
               </h2>
-              <p className="text-kaal-muted text-xl font-body leading-relaxed mb-10">
-                Founded by design obsessives, Kaal was built to solve a single problem: the digital landscape is loud but generic. We help ambitious brands break through the noise by building high-performance sites that don&apos;t just look like art—they convert like machines.
+              <p className="text-kaal-muted text-xl font-body leading-relaxed mb-6">
+                Every element should earn its place.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
                 {[
-                  { title: 'Clarity', desc: 'Zero friction journeys.' },
-                  { title: 'Emotion', desc: 'Cinematic impact.' },
-                  { title: 'ROI', desc: 'Conversion driven.' }
+                  { title: 'Typography', desc: 'Guides attention.' },
+                  { title: 'Motion', desc: 'Directs focus.' },
+                  { title: 'Structure', desc: 'Drives action.' }
                 ].map((item, idx) => (
                   <motion.div
                     key={item.title}
@@ -93,6 +93,12 @@ const App: React.FC = () => {
                   </motion.div>
                 ))}
               </div>
+              <p className="text-kaal-muted text-xl font-body leading-relaxed mb-4">
+                I design with clarity first. Then layer emotion and precision.
+              </p>
+              <p className="text-kaal-muted text-xl font-body leading-relaxed">
+                AI accelerates the process. Strategy defines the outcome.
+              </p>
             </motion.div>
             <motion.div 
               className="w-full md:w-1/2 relative"

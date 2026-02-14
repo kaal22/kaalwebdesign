@@ -16,17 +16,17 @@ const Problem: React.FC = () => {
   const problems = [
     {
       title: 'Generic Design',
-      desc: 'Looking like everyone else is the fastest way to be forgotten in a saturated market.',
+      desc: 'Looks clean. Says nothing. Blends in.',
       icon: <Copy size={24} className="text-kaal-accent" />
     },
     {
       title: 'Weak Positioning',
-      desc: "If your message is for everyone, it's for no one. We refine your core narrative.",
+      desc: 'No clear message. No emotional hook. No reason to stay.',
       icon: <Target size={24} className="text-kaal-accent" />
     },
     {
       title: 'No Conversion Strategy',
-      desc: 'Traffic without conversion is just vanity. We build websites that drive ROI.',
+      desc: 'Traffic comes in. Momentum dies. Opportunity lost.',
       icon: <TrendingUp size={24} className="text-kaal-accent" />
     }
   ];
