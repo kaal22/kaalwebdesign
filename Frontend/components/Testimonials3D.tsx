@@ -1,29 +1,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ThreeDTestimonialCarousel } from './ui/3d-carousel';
-import { TESTIMONIALS } from '../constants';
+import { ThreeDPrincipleCarousel } from './ui/3d-carousel';
+import { PRINCIPLES } from '../constants';
 
 const Testimonials3D: React.FC = () => {
   return (
     <section className="py-24 px-6 md:px-12 bg-transparent overflow-hidden relative">
-        <div className="max-w-7xl mx-auto">
-        <motion.div 
-          className="text-center mb-16 relative z-10"
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          className="text-center mb-12 relative z-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-display font-bold">
-            Trusted by <span className="text-kaal-accent">Ambitious</span> Founders.
+            Engineered with <span className="text-kaal-accent">Intention</span>.
           </h2>
           <p className="text-kaal-muted text-lg font-body mt-4">
-            Design that moves metrics — not just pixels.
+            Every decision is deliberate.<br />
+            Every build is measured.
+          </p>
+          <p className="text-kaal-muted text-base font-body mt-6 max-w-2xl mx-auto">
+            Design is emotional. Execution is deliberate.
+          </p>
+          <p className="text-kaal-muted text-base font-body mt-3 max-w-2xl mx-auto">
+            Every project is built on clear principles — not trends, not templates, not guesswork.
           </p>
         </motion.div>
 
         <div className="relative z-[3] h-[400px] md:h-[600px]">
-          <ThreeDTestimonialCarousel testimonials={TESTIMONIALS} />
+          <ThreeDPrincipleCarousel principles={PRINCIPLES} />
         </div>
 
         <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-y border-kaal-border py-12">

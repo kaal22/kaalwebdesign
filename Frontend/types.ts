@@ -23,6 +23,13 @@ export interface Testimonial {
   avatar: string;
 }
 
+export interface PrincipleCard {
+  id: string;
+  number: string;
+  title: string;
+  content: string[];
+}
+
 export interface Service {
   id: string;
   title: string;
@@ -36,4 +43,11 @@ export interface ProcessStep {
   number: string;
   title: string;
   description: string;
+}
+
+export interface SystemNode {
+  id: string;
+  title: string;
+  line1: string;
+  line2: string;
 }

@@ -1,5 +1,5 @@
 
-import { Project, Testimonial, Service, ProcessStep } from './types';
+import { Project, Testimonial, Service, ProcessStep, PrincipleCard, SystemNode } from './types';
 import { Code, Zap, Building2, Rocket, Link2, TrendingUp, DollarSign, Users } from 'lucide-react';
 
 export const PROJECTS: Project[] = [
@@ -128,6 +128,66 @@ export const TESTIMONIALS: Testimonial[] = [
   }
 ];
 
+export const PRINCIPLES: PrincipleCard[] = [
+  {
+    id: 'clarity',
+    number: '01',
+    title: 'Clarity',
+    content: [
+      'Every element earns its place.',
+      'Structure before style. Message before motion.',
+      'No visual noise. No confusion.'
+    ]
+  },
+  {
+    id: 'narrative',
+    number: '02',
+    title: 'Narrative',
+    content: [
+      "A website isn't pages.",
+      "It's a guided experience.",
+      'Attention flows intentionally — from first impression to final action.'
+    ]
+  },
+  {
+    id: 'conversion',
+    number: '03',
+    title: 'Conversion',
+    content: [
+      'Design without direction is decoration.',
+      'Hierarchy, spacing, and rhythm are used to move users forward — naturally.'
+    ]
+  },
+  {
+    id: 'performance',
+    number: '04',
+    title: 'Performance',
+    content: [
+      'Fast-loading. Optimised. Clean.',
+      'Built to perform technically — not just visually.'
+    ]
+  },
+  {
+    id: 'precision',
+    number: '05',
+    title: 'Precision',
+    content: [
+      'No templates. No recycled layouts. No outsourcing.',
+      'Every build is hands-on.'
+    ]
+  },
+  {
+    id: 'scalability',
+    number: '06',
+    title: 'Scalability',
+    content: [
+      'Designed for growth.',
+      'Expandable systems. Structured components.',
+      "Built for what's next — not just launch day."
+    ]
+  }
+];
+
 export const SERVICES: Service[] = [
   {
     id: 'digital-gravity',
@@ -155,4 +215,13 @@ export const PROCESS_STEPS: ProcessStep[] = [
   { number: '03', title: 'Design System', description: 'Bold visuals. Logical hierarchy. Scalable components.' },
   { number: '04', title: 'Build', description: 'Fast. Optimised. Clean code. Future-ready.' },
   { number: '05', title: 'Launch', description: 'Live with confidence. Measured for performance.' }
+];
+
+export const SYSTEM_NODES: SystemNode[] = [
+  { id: 'typography', title: 'Typography', line1: 'Guides attention.', line2: 'Hierarchy creates clarity.' },
+  { id: 'motion', title: 'Motion', line1: 'Directs focus.', line2: 'Movement with purpose — never decoration.' },
+  { id: 'structure', title: 'Structure', line1: 'Drives action.', line2: 'Every section leads somewhere.' },
+  { id: 'narrative', title: 'Narrative', line1: 'A guided experience.', line2: 'Not just pages — progression.' },
+  { id: 'conversion', title: 'Conversion', line1: 'Designed to move users forward.', line2: 'Subtle. Intentional. Effective.' },
+  { id: 'performance', title: 'Performance', line1: 'Fast. Optimised. Scalable.', line2: 'Built for real-world use.' }
 ];
