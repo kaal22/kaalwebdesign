@@ -32,10 +32,10 @@ const Services: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tight">
-            Ways to <span className="text-kaal-accent italic">Elevate</span>.
+            Work <span className="text-kaal-accent">Together</span>.
           </h2>
           <p className="text-kaal-muted text-lg mt-4">
-            One focused way to work together.
+            A focused, strategy-led website experience.
           </p>
         </motion.div>
 

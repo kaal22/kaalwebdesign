@@ -192,7 +192,7 @@ export const SERVICES: Service[] = [
   {
     id: 'digital-gravity',
     title: 'Founding Website Experience',
-    description: 'A fully custom website built to attract attention.',
+    description: 'A fully custom website engineered to attract attention — and convert it with precision.',
     price: '£1,800 – £2,200',
     delivery: '3–4 week delivery',
     features: [

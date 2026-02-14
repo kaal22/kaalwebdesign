@@ -14,7 +14,7 @@ const BlazingFastSection: React.FC = () => {
             className="order-2 lg:order-1"
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
-              Blazing Fast. <span className="text-kaal-accent italic">By Design.</span>
+              Blazing Fast. <span className="text-kaal-accent">By Design.</span>
             </h2>
             <p className="text-kaal-muted text-lg md:text-xl font-body leading-relaxed mb-8">
               Speed isn't an afterthought.<br />

@@ -35,7 +35,7 @@ const ProcessTimeline: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl md:text-7xl font-display font-bold mb-6">
+          <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tight mb-6">
             The Path to <span className="text-kaal-accent">Clarity</span>.
           </h2>
           <p className="text-kaal-muted text-xl font-body max-w-2xl mx-auto">
