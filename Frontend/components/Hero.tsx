@@ -11,17 +11,15 @@ const Hero: React.FC = () => {
     offset: ["start start", "end start"]
   });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  const noParallax = shouldReduceMotion ? {} : { y: textY, opacity: textOpacity };
   const entranceDuration = shouldReduceMotion ? 0.2 : 2;
   const wordDelay = shouldReduceMotion ? 0 : 0.3;
   const scrollIndicatorDelay = shouldReduceMotion ? 0.2 : 3.5;
   const scrollIndicatorBounce = shouldReduceMotion ? false : true;
+
+  const contentClassName = "relative z-10 h-full flex items-center px-6 md:px-6 lg:px-12";
 
   return (
     <section 
@@ -29,11 +27,9 @@ const Hero: React.FC = () => {
       className="relative w-full h-screen overflow-hidden bg-transparent"
     >
 
-      {/* Main Headline - Left Aligned, Large - same horizontal gutter as description/awards on mobile */}
-      <motion.div 
-        style={noParallax}
-        className="relative z-10 h-full flex items-center px-6 md:px-6 lg:px-12"
-      >
+      {/* Main Headline - no scroll-driven parallax on mobile to avoid glitch */}
+      {shouldReduceMotion ? (
+        <div className={contentClassName}>
         <div className="w-full">
           <motion.h1
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
@@ -73,7 +69,50 @@ const Hero: React.FC = () => {
             <span className="block">Built to pull users in — and move them to act.</span>
           </motion.p>
         </div>
-      </motion.div>
+        </div>
+      ) : (
+        <motion.div style={{ y: textY, opacity: textOpacity }} className={contentClassName}>
+        <div className="w-full">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display font-bold leading-[0.75] md:leading-[0.8] tracking-tight text-white text-left text-[clamp(3.5rem,22vw,10rem)] sm:text-[clamp(4.5rem,20vw,12rem)] md:text-[10rem] lg:text-[14rem] xl:text-[16rem]"
+          >
+            <span className="block overflow-hidden -mb-2 md:-mb-4">
+              <motion.span
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+                className="block"
+              >
+                Digital
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden">
+              <motion.span
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="block text-kaal-accent"
+              >
+                Gravity<span className="text-white">.</span>
+              </motion.span>
+            </span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 1 }}
+            className="text-lg sm:text-xl md:text-2xl text-white/80 font-body leading-snug mt-6 md:mt-8 space-y-1"
+          >
+            <span className="block">AI-accelerated design.</span>
+            <span className="block">Human-led strategy.</span>
+            <span className="block">Built to pull users in — and move them to act.</span>
+          </motion.p>
+        </div>
+        </motion.div>
+      )}
 
       {/* Supporting Line - Bottom Right */}
       <motion.div

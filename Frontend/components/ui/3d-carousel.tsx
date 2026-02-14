@@ -365,7 +365,7 @@ const PrincipleCarouselWheel = memo(
 
     const reduceMotion = useMediaQuery("(prefers-reduced-motion: reduce)")
     const isNarrow = useMediaQuery("(max-width: 768px)")
-    const rotationSpeed = reduceMotion ? 0 : isNarrow ? 0.02 : 0.05
+    const rotationSpeed = reduceMotion || isNarrow ? 0 : 0.05
     useEffect(() => {
       if (!isCarouselActive || rotationSpeed === 0) return
       let animationFrame: number
@@ -381,7 +381,11 @@ const PrincipleCarouselWheel = memo(
     return (
       <div
         className="flex h-full items-center justify-center bg-transparent"
-        style={{ perspective: "1000px", transformStyle: "preserve-3d", willChange: "transform" }}
+        style={{
+          perspective: "1000px",
+          transformStyle: "preserve-3d",
+          willChange: isNarrow ? undefined : "transform",
+        }}
       >
         <motion.div
           drag={isCarouselActive ? "x" : false}
@@ -541,7 +545,7 @@ function ThreeDPrincipleCarousel({ principles }: { principles: PrincipleCard[] }
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full overflow-hidden">
+      <div className="relative h-[300px] sm:h-[380px] md:h-[600px] w-full overflow-hidden">
         <PrincipleCarouselWheel
           handleClick={handleClick}
           controls={controls}

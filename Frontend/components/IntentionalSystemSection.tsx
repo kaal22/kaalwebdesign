@@ -7,7 +7,7 @@ const IntentionalSystemSection: React.FC = () => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [rotationAngle, setRotationAngle] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
-  const { shouldReduceMotion } = useReducedMotion();
+  const { shouldReduceMotion, isMobile, prefersReducedMotion } = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
 
@@ -18,14 +18,15 @@ const IntentionalSystemSection: React.FC = () => {
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  // Auto-rotate when nothing selected - disabled on mobile to avoid jank
+  // Auto-rotate when nothing selected - only off for prefers-reduced-motion; slower on mobile
   useEffect(() => {
-    if (activeId !== null || shouldReduceMotion) return;
+    if (activeId !== null || prefersReducedMotion) return;
+    const step = isMobile ? 0.12 : 0.3;
     const t = setInterval(() => {
-      setRotationAngle((prev) => (prev + 0.3) % 360);
+      setRotationAngle((prev) => (prev + step) % 360);
     }, 50);
     return () => clearInterval(t);
-  }, [activeId, shouldReduceMotion]);
+  }, [activeId, prefersReducedMotion, isMobile]);
 
   const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === containerRef.current || e.target === orbitRef.current) {
@@ -34,10 +35,13 @@ const IntentionalSystemSection: React.FC = () => {
   };
 
   const nodes = SYSTEM_NODES;
-  const circleRadius = isDesktop ? 320 : 200;
-  const iconSize = isDesktop ? 56 : 40;
-  const iconOffset = iconSize / 2 + 10;
+  // Smaller wheel on mobile so it fits and doesn’t dominate the screen
+  const circleRadius = isDesktop ? 320 : 100;
+  const iconSize = isDesktop ? 56 : 32;
+  const iconOffset = iconSize / 2 + 8;
   const radius = circleRadius + iconOffset;
+  const svgSize = isDesktop ? 640 : 240;
+  const svgCenter = svgSize / 2;
 
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
@@ -78,7 +82,7 @@ const IntentionalSystemSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="relative w-full max-w-4xl mx-auto min-h-[400px] sm:min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-visible">
+        <div className="relative w-full max-w-4xl mx-auto min-h-[280px] sm:min-h-[340px] md:min-h-[500px] lg:min-h-[600px] flex items-center justify-center overflow-visible">
           <div
             ref={orbitRef}
             className="absolute w-full h-full flex items-center justify-center"
@@ -105,14 +109,14 @@ const IntentionalSystemSection: React.FC = () => {
                 left: '50%',
                 top: '50%',
                 transform: 'translate(-50%, -50%)',
-                width: isDesktop ? 640 : 400,
-                height: isDesktop ? 640 : 400,
+                width: svgSize,
+                height: svgSize,
               }}
-              viewBox={`0 0 ${isDesktop ? 640 : 400} ${isDesktop ? 640 : 400}`}
+              viewBox={`0 0 ${svgSize} ${svgSize}`}
             >
               <circle
-                cx={isDesktop ? 320 : 200}
-                cy={isDesktop ? 320 : 200}
+                cx={svgCenter}
+                cy={svgCenter}
                 r={circleRadius}
                 fill="none"
                 stroke="rgba(255, 255, 255, 0.1)"
@@ -145,7 +149,7 @@ const IntentionalSystemSection: React.FC = () => {
                   {/* Node circle with title visible */}
                   <motion.div
                     className={`
-                      w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center border-2
+                      w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center border-2
                       ${isExpanded
                         ? 'bg-kaal-accent border-kaal-accent text-white shadow-lg shadow-kaal-accent/30 scale-125'
                         : 'bg-transparent text-kaal-text border-white/40 hover:border-kaal-accent/50'
@@ -153,7 +157,7 @@ const IntentionalSystemSection: React.FC = () => {
                     `}
                     whileHover={shouldReduceMotion ? undefined : { scale: 1.2 }}
                   >
-                    <span className="text-xs md:text-sm font-display font-bold">
+                    <span className="text-[10px] sm:text-xs md:text-sm font-display font-bold">
                       {node.title.slice(0, 1)}
                     </span>
                   </motion.div>
@@ -176,7 +180,7 @@ const IntentionalSystemSection: React.FC = () => {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
-                        className="absolute top-20 left-1/2 -translate-x-1/2 w-72 z-[3] rounded-2xl bg-black/90 backdrop-blur-lg border border-white/20 shadow-xl shadow-kaal-accent/10 overflow-hidden"
+                        className="absolute top-14 sm:top-20 left-1/2 -translate-x-1/2 w-64 sm:w-72 z-[3] rounded-2xl bg-black/90 backdrop-blur-lg border border-white/20 shadow-xl shadow-kaal-accent/10 overflow-hidden"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <div className="absolute -top-px left-1/2 -translate-x-1/2 w-px h-2 bg-kaal-accent/50" />

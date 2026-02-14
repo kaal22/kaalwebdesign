@@ -34,7 +34,7 @@ const Problem: React.FC = () => {
   return (
     <section 
       ref={ref}
-      className="relative py-28 md:py-40 px-6 md:px-12 bg-transparent overflow-hidden min-h-screen flex items-center"
+      className="relative py-28 md:py-40 px-6 md:px-12 bg-transparent overflow-x-hidden min-h-screen flex items-start md:items-center"
     >
       {/* Background glow - fixed (no parallax) so mask fade doesn't shift on scroll; no scroll-linked opacity on mobile */}
       <motion.div 
@@ -52,7 +52,7 @@ const Problem: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <motion.div 
-          className="mb-20"
+          className="mb-12 md:mb-20"
           initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -74,7 +74,7 @@ const Problem: React.FC = () => {
           </motion.h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 pb-8 md:pb-0">
           {problems.map((p, idx) => (
             <motion.div
               key={p.title}

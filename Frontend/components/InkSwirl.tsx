@@ -1,12 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { useIsDesktopPointer } from '../hooks/useReducedMotion';
+import { useIsDesktopPointer, useReducedMotion } from '../hooks/useReducedMotion';
 
 interface InkSwirlProps {
   className?: string;
 }
 
 const InkSwirl: React.FC<InkSwirlProps> = ({ className = '' }) => {
-  const isDesktop = useIsDesktopPointer();
+  const hasFinePointer = useIsDesktopPointer();
+  const { isMobile } = useReducedMotion();
+  const isDesktop = hasFinePointer && !isMobile;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const particlesRef = useRef<Array<{
