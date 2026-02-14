@@ -33,20 +33,16 @@ const Testimonials3D: React.FC = () => {
           <ThreeDPrincipleCarousel principles={PRINCIPLES} />
         </div>
 
-        <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-y border-kaal-border py-12">
-          <div>
-            <span className="block text-4xl font-display font-bold text-kaal-accent mb-2">45+</span>
-            <span className="text-xs uppercase tracking-widest text-kaal-muted font-bold">Projects Delivered</span>
-          </div>
-          <div>
+        <div className="mt-24 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center border-y border-kaal-border py-12 items-center justify-items-center">
+          <div className="flex flex-col items-center">
             <span className="block text-4xl font-display font-bold text-kaal-accent mb-2">4</span>
             <span className="text-xs uppercase tracking-widest text-kaal-muted font-bold">Weeks Average Launch</span>
           </div>
-          <div>
+          <div className="flex flex-col items-center">
             <span className="block text-4xl font-display font-bold text-kaal-accent mb-2">100%</span>
             <span className="text-xs uppercase tracking-widest text-kaal-muted font-bold">Custom Design</span>
           </div>
-          <div>
+          <div className="flex flex-col items-center">
             <span className="block text-4xl font-display font-bold text-kaal-accent mb-2">0</span>
             <span className="text-xs uppercase tracking-widest text-kaal-muted font-bold">Templates Used</span>
           </div>

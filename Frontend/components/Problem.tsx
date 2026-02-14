@@ -36,17 +36,17 @@ const Problem: React.FC = () => {
       ref={ref}
       className="relative py-32 px-6 md:px-12 bg-transparent overflow-hidden min-h-screen flex items-center"
     >
-      {/* Parallax Background Layer */}
+      {/* Parallax Background Layer - masked so glow fades out smoothly at bottom */}
       <motion.div 
-        style={{ y: backgroundY, opacity }}
+        style={{ 
+          y: backgroundY, 
+          opacity,
+          maskImage: 'linear-gradient(to bottom, black 45%, transparent 85%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 45%, transparent 85%)',
+        }}
         className="absolute inset-0 pointer-events-none"
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-kaal-accent/5 rounded-full blur-[120px]" />
-        {/* Fade out glow at bottom so it doesn't cut off */}
-        <div 
-          className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#000000] to-transparent"
-          aria-hidden
-        />
       </motion.div>
 
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
