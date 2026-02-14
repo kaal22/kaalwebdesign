@@ -1,6 +1,4 @@
-
 import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Problem from './components/Problem';
@@ -15,9 +13,11 @@ import ScrollProgress from './components/ScrollProgress';
 import StoryChapter from './components/StoryChapter';
 import InkSwirl from './components/InkSwirl';
 import CustomCursor from './components/CustomCursor';
+import { useReducedMotion } from './hooks/useReducedMotion';
 
 const App: React.FC = () => {
-  // Simple smooth scroll behavior
+  const { shouldReduceMotion } = useReducedMotion();
+
   useEffect(() => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -45,7 +45,8 @@ const App: React.FC = () => {
         <InkSwirl />
       </div>
       
-      <ScrollProgress />
+      {/* Scroll progress bar - desktop only to reduce scroll jank on mobile */}
+      {!shouldReduceMotion && <ScrollProgress />}
       <Navbar />
       
       <main className="relative z-[2]">

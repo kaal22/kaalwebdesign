@@ -33,8 +33,8 @@ const ProcessTimeline: React.FC = () => {
           className="text-center mb-24"
           initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.35 }}
         >
           <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tight mb-6">
             The Path to <span className="text-kaal-accent">Clarity</span>.
@@ -57,10 +57,10 @@ const ProcessTimeline: React.FC = () => {
             {PROCESS_STEPS.map((step, idx) => (
               <motion.div
                 key={step.number}
-                initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 50 }}
+                initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
                 className={`flex flex-col md:flex-row items-start md:items-center ${
                   idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
@@ -79,8 +79,12 @@ const ProcessTimeline: React.FC = () => {
                 <motion.div 
                   initial={{ scale: shouldReduceMotion ? 1 : 0 }}
                   whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: shouldReduceMotion ? 0 : idx * 0.1, type: "spring", stiffness: 200 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0 }
+                      : { delay: idx * 0.05, duration: 0.25, ease: "easeOut" }
+                  }
                   className="absolute left-0 md:left-1/2 -translate-x-[7px] md:-translate-x-1/2 w-4 h-4 rounded-full bg-kaal-accent border-4 border-black z-10 shadow-[0_0_15px_rgba(255,77,26,0.6)]"
                 />
 

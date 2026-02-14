@@ -43,6 +43,7 @@ const IntentionalSystemSection: React.FC = () => {
   const svgSize = isDesktop ? 640 : 240;
   const svgCenter = svgSize / 2;
 
+  const isRotating = activeId === null && !prefersReducedMotion;
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
     const radian = (angle * Math.PI) / 180;
@@ -139,7 +140,7 @@ const IntentionalSystemSection: React.FC = () => {
               return (
                 <div
                   key={node.id}
-                  className="absolute transition-all duration-700 cursor-pointer"
+                  className={`absolute cursor-pointer ${isRotating ? 'transition-none' : 'transition-all duration-300'}`}
                   style={nodeStyle}
                   onClick={(e) => {
                     e.stopPropagation();
