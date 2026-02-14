@@ -1,10 +1,11 @@
-
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { PROCESS_STEPS } from '../constants';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 const ProcessTimeline: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const { shouldReduceMotion } = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -19,9 +20,9 @@ const ProcessTimeline: React.FC = () => {
       id="process" 
       className="relative py-28 md:py-40 px-6 md:px-12 bg-transparent overflow-hidden min-h-screen flex items-center"
     >
-      {/* Parallax Background */}
+      {/* Parallax Background - disabled on mobile */}
       <motion.div 
-        style={{ y: backgroundY }}
+        style={shouldReduceMotion ? undefined : { y: backgroundY }}
         className="absolute inset-0 pointer-events-none"
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[120px]" />
@@ -30,10 +31,10 @@ const ProcessTimeline: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <motion.div 
           className="text-center mb-24"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
         >
           <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tight mb-6">
             The Path to <span className="text-kaal-accent">Clarity</span>.
@@ -47,7 +48,7 @@ const ProcessTimeline: React.FC = () => {
           {/* Animated Vertical Line */}
           <div className="absolute left-[15px] md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-kaal-border to-transparent overflow-hidden">
             <motion.div
-              style={{ height: lineHeight }}
+              style={shouldReduceMotion ? { height: '100%' } : { height: lineHeight }}
               className="w-full bg-gradient-to-b from-kaal-accent via-kaal-accent/50 to-transparent"
             />
           </div>
@@ -56,10 +57,10 @@ const ProcessTimeline: React.FC = () => {
             {PROCESS_STEPS.map((step, idx) => (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
                 className={`flex flex-col md:flex-row items-start md:items-center ${
                   idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
@@ -76,10 +77,10 @@ const ProcessTimeline: React.FC = () => {
 
                 {/* Animated Dot */}
                 <motion.div 
-                  initial={{ scale: 0 }}
+                  initial={{ scale: shouldReduceMotion ? 1 : 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, type: "spring", stiffness: 200 }}
+                  transition={{ delay: shouldReduceMotion ? 0 : idx * 0.1, type: "spring", stiffness: 200 }}
                   className="absolute left-0 md:left-1/2 -translate-x-[7px] md:-translate-x-1/2 w-4 h-4 rounded-full bg-kaal-accent border-4 border-black z-10 shadow-[0_0_15px_rgba(255,77,26,0.6)]"
                 />
 

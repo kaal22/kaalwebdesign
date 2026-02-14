@@ -1,13 +1,17 @@
 import React from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 const ScrollProgress: React.FC = () => {
+  const { shouldReduceMotion } = useReducedMotion();
   const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
+  const springScaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
+  const linearScaleX = useTransform(scrollYProgress, (v) => v);
+  const scaleX = shouldReduceMotion ? linearScaleX : springScaleX;
 
   return (
     <motion.div

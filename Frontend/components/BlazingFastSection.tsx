@@ -1,16 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 const BlazingFastSection: React.FC = () => {
+  const { shouldReduceMotion } = useReducedMotion();
   return (
     <section className="py-28 md:py-40 px-6 md:px-12 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
+            initial={{ opacity: shouldReduceMotion ? 1 : 0, x: shouldReduceMotion ? 0 : -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
             className="order-2 lg:order-1"
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
@@ -35,10 +37,10 @@ const BlazingFastSection: React.FC = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
+            initial={{ opacity: shouldReduceMotion ? 1 : 0, x: shouldReduceMotion ? 0 : 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
             className="order-1 lg:order-2 relative rounded-2xl w-full p-[3px] flame-border"
           >
             <div className="rounded-2xl overflow-hidden bg-[#000]">

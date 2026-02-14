@@ -2,17 +2,19 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ThreeDPrincipleCarousel } from './ui/3d-carousel';
 import { PRINCIPLES } from '../constants';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 const Testimonials3D: React.FC = () => {
+  const { shouldReduceMotion } = useReducedMotion();
   return (
     <section className="py-28 md:py-40 px-6 md:px-12 bg-transparent overflow-hidden relative">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-12 relative z-10"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
         >
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold">
             Engineered with <span className="text-kaal-accent">Intention</span>.

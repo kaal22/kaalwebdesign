@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SYSTEM_NODES } from '../constants';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 const IntentionalSystemSection: React.FC = () => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [rotationAngle, setRotationAngle] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
+  const { shouldReduceMotion } = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
 
@@ -16,14 +18,14 @@ const IntentionalSystemSection: React.FC = () => {
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  // Auto-rotate when nothing selected
+  // Auto-rotate when nothing selected - disabled on mobile to avoid jank
   useEffect(() => {
-    if (activeId !== null) return;
+    if (activeId !== null || shouldReduceMotion) return;
     const t = setInterval(() => {
       setRotationAngle((prev) => (prev + 0.3) % 360);
     }, 50);
     return () => clearInterval(t);
-  }, [activeId]);
+  }, [activeId, shouldReduceMotion]);
 
   const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === containerRef.current || e.target === orbitRef.current) {
@@ -59,10 +61,10 @@ const IntentionalSystemSection: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto w-full">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
           className="relative z-20 mb-16 md:mb-24"
         >
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight">
@@ -82,15 +84,15 @@ const IntentionalSystemSection: React.FC = () => {
             className="absolute w-full h-full flex items-center justify-center"
             style={{ perspective: '1000px' }}
           >
-            {/* Center core - same style as original wheel */}
+            {/* Center core - same style as original wheel; no pulse on mobile */}
             <motion.div
               className="absolute w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-kaal-accent via-orange-500 to-red-500 flex items-center justify-center z-10"
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              animate={shouldReduceMotion ? { scale: 1 } : { scale: [1, 1.1, 1] }}
+              transition={shouldReduceMotion ? { duration: 0 } : { duration: 2, repeat: Infinity }}
             >
-              <div className="absolute w-20 h-20 md:w-28 md:h-28 rounded-full border border-kaal-accent/20 animate-ping opacity-70" />
+              <div className={`absolute w-20 h-20 md:w-28 md:h-28 rounded-full border border-kaal-accent/20 opacity-70 ${shouldReduceMotion ? '' : 'animate-ping'}`} />
               <div
-                className="absolute w-24 h-24 md:w-36 md:h-36 rounded-full border border-kaal-accent/10 animate-ping opacity-50"
+                className={`absolute w-24 h-24 md:w-36 md:h-36 rounded-full border border-kaal-accent/10 opacity-50 ${shouldReduceMotion ? '' : 'animate-ping'}`}
                 style={{ animationDelay: '0.5s' }}
               />
               <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/80 backdrop-blur-md" />
@@ -149,7 +151,7 @@ const IntentionalSystemSection: React.FC = () => {
                         : 'bg-transparent text-kaal-text border-white/40 hover:border-kaal-accent/50'
                       }
                     `}
-                    whileHover={{ scale: 1.2 }}
+                    whileHover={shouldReduceMotion ? undefined : { scale: 1.2 }}
                   >
                     <span className="text-xs md:text-sm font-display font-bold">
                       {node.title.slice(0, 1)}
@@ -170,10 +172,10 @@ const IntentionalSystemSection: React.FC = () => {
                   <AnimatePresence>
                     {isExpanded && (
                       <motion.div
-                        initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                        initial={{ opacity: shouldReduceMotion ? 1 : 0, scale: shouldReduceMotion ? 1 : 0.8, y: shouldReduceMotion ? 0 : 10 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
                         className="absolute top-20 left-1/2 -translate-x-1/2 w-72 z-[3] rounded-2xl bg-black/90 backdrop-blur-lg border border-white/20 shadow-xl shadow-kaal-accent/10 overflow-hidden"
                         onClick={(e) => e.stopPropagation()}
                       >

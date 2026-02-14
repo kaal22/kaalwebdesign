@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 interface StoryChapterProps {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ const StoryChapter: React.FC<StoryChapterProps> = ({
   showTitle = true
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const { shouldReduceMotion } = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -29,9 +31,9 @@ const StoryChapter: React.FC<StoryChapterProps> = ({
       ref={ref}
       className={`relative ${className}`}
     >
-      {/* Parallax Background Layer */}
+      {/* Parallax Background Layer - disabled on mobile/reduced motion */}
       <motion.div 
-        style={{ y: backgroundY }}
+        style={shouldReduceMotion ? undefined : { y: backgroundY }}
         className="absolute inset-0 pointer-events-none overflow-hidden"
       >
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[120px] ${
@@ -45,9 +47,10 @@ const StoryChapter: React.FC<StoryChapterProps> = ({
           className="absolute top-12 left-6 md:left-12 z-10"
         >
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: shouldReduceMotion ? 1 : 0, x: shouldReduceMotion ? 0 : -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
             className="flex items-center gap-4 mb-4"
           >
             <span className="text-kaal-accent text-sm font-bold tracking-widest uppercase">
@@ -56,9 +59,10 @@ const StoryChapter: React.FC<StoryChapterProps> = ({
             <div className="h-px w-20 bg-kaal-accent/30" />
           </motion.div>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
             className="text-4xl md:text-6xl font-display font-bold text-white"
           >
             {title}

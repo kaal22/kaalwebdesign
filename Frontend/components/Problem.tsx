@@ -1,10 +1,11 @@
-
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Copy, Target, TrendingUp } from 'lucide-react';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 const Problem: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const { shouldReduceMotion } = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -35,10 +36,10 @@ const Problem: React.FC = () => {
       ref={ref}
       className="relative py-28 md:py-40 px-6 md:px-12 bg-transparent overflow-hidden min-h-screen flex items-center"
     >
-      {/* Background glow - fixed (no parallax) so mask fade doesn't shift on scroll */}
+      {/* Background glow - fixed (no parallax) so mask fade doesn't shift on scroll; no scroll-linked opacity on mobile */}
       <motion.div 
         style={{ 
-          opacity,
+          opacity: shouldReduceMotion ? 1 : opacity,
           maskImage: 'linear-gradient(to bottom, black 45%, transparent 85%)',
           WebkitMaskImage: 'linear-gradient(to bottom, black 45%, transparent 85%)',
         }}
@@ -52,10 +53,10 @@ const Problem: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <motion.div 
           className="mb-20"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
         >
           <motion.h2
             className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight"
@@ -63,10 +64,10 @@ const Problem: React.FC = () => {
             Most websites look fine.<br />
             <motion.span 
               className="text-kaal-accent"
-              initial={{ opacity: 0 }}
+              initial={{ opacity: shouldReduceMotion ? 1 : 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: shouldReduceMotion ? 0 : 0.3, duration: shouldReduceMotion ? 0 : 0.4 }}
             >
               They just don&apos;t perform<span className="text-white">.</span>
             </motion.span>
@@ -77,23 +78,23 @@ const Problem: React.FC = () => {
           {problems.map((p, idx) => (
             <motion.div
               key={p.title}
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 50, scale: shouldReduceMotion ? 1 : 0.9 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ 
-                delay: idx * 0.15,
-                duration: 0.6,
+                delay: shouldReduceMotion ? 0 : idx * 0.15,
+                duration: shouldReduceMotion ? 0 : 0.6,
                 type: "spring",
                 stiffness: 100
               }}
-              whileHover={{ y: -10, scale: 1.02 }}
+              whileHover={shouldReduceMotion ? undefined : { y: -10, scale: 1.02 }}
               className="group glass p-10 rounded-3xl relative overflow-hidden border border-white/10 hover:border-kaal-accent/30 transition-all duration-500 cursor-pointer z-[3]"
             >
               <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               <motion.div 
                 className="mb-8 w-14 h-14 flex items-center justify-center bg-transparent rounded-2xl border border-white/10 group-hover:scale-110 transition-transform duration-500"
-                whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+                whileHover={shouldReduceMotion ? undefined : { rotate: [0, -10, 10, -10, 0] }}
                 transition={{ duration: 0.5 }}
               >
                 {p.icon}

@@ -1,9 +1,10 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 const ContactForm: React.FC = () => {
   const [formState, setFormState] = useState<'idle' | 'loading' | 'success'>('idle');
+  const { shouldReduceMotion } = useReducedMotion();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,10 +22,10 @@ const ContactForm: React.FC = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: shouldReduceMotion ? 1 : 0, x: shouldReduceMotion ? 0 : -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
           >
             <h2 className="text-6xl md:text-7xl font-display font-bold leading-tight mb-8">
               Let's Build Something <span className="text-kaal-accent">That Matters</span>.
@@ -60,16 +61,16 @@ const ContactForm: React.FC = () => {
 
           <motion.div 
             className="glass p-8 md:p-12 rounded-[2rem] border-kaal-border relative z-[3]"
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: shouldReduceMotion ? 1 : 0, x: shouldReduceMotion ? 0 : 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
           >
             <AnimatePresence mode="wait">
               {formState === 'success' ? (
                 <motion.div
                   key="success"
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: shouldReduceMotion ? 1 : 0, scale: shouldReduceMotion ? 1 : 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="h-full flex flex-col items-center justify-center text-center py-20"
                 >

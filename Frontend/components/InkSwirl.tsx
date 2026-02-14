@@ -1,10 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { useIsDesktopPointer } from '../hooks/useReducedMotion';
 
 interface InkSwirlProps {
   className?: string;
 }
 
 const InkSwirl: React.FC<InkSwirlProps> = ({ className = '' }) => {
+  const isDesktop = useIsDesktopPointer();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const particlesRef = useRef<Array<{
@@ -21,6 +23,7 @@ const InkSwirl: React.FC<InkSwirlProps> = ({ className = '' }) => {
   const animationFrameRef = useRef<number>();
 
   useEffect(() => {
+    if (!isDesktop) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -144,7 +147,9 @@ const InkSwirl: React.FC<InkSwirlProps> = ({ className = '' }) => {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, []);
+  }, [isDesktop]);
+
+  if (!isDesktop) return null;
 
   return (
     <canvas

@@ -2,9 +2,11 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SERVICES } from '../constants';
 import { Check } from 'lucide-react';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 const Services: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const { shouldReduceMotion } = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -25,10 +27,10 @@ const Services: React.FC = () => {
 
       <div className="max-w-md mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tight">
@@ -40,10 +42,10 @@ const Services: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.5 }}
           className="rounded-2xl border border-white/10 bg-black/40 backdrop-blur-sm p-6 md:p-8"
         >
           <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">

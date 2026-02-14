@@ -95,26 +95,21 @@ const Carousel = memo(
       (value) => `rotate3d(0, 1, 0, ${value}deg)`
     )
 
-    // Auto-rotate the carousel slowly when active
+    // Auto-rotate the carousel slowly when active; much slower on small screens / reduced motion
+    const reduceMotion = useMediaQuery("(prefers-reduced-motion: reduce)")
+    const isNarrow = useMediaQuery("(max-width: 768px)")
+    const rotationSpeed = reduceMotion ? 0 : isNarrow ? 0.02 : 0.05
     useEffect(() => {
-      if (!isCarouselActive) return
-      
+      if (!isCarouselActive || rotationSpeed === 0) return
       let animationFrame: number
       const animate = () => {
-        rotation.set(rotation.get() + 0.05) // Very slow continuous rotation
-        controls.set({
-          rotateY: rotation.get(),
-        })
+        rotation.set(rotation.get() + rotationSpeed)
+        controls.set({ rotateY: rotation.get() })
         animationFrame = requestAnimationFrame(animate)
       }
       animationFrame = requestAnimationFrame(animate)
-      
-      return () => {
-        if (animationFrame) {
-          cancelAnimationFrame(animationFrame)
-        }
-      }
-    }, [isCarouselActive, rotation, controls])
+      return () => animationFrame && cancelAnimationFrame(animationFrame)
+    }, [isCarouselActive, rotation, controls, rotationSpeed])
 
     return (
       <div
@@ -368,17 +363,20 @@ const PrincipleCarouselWheel = memo(
       (value) => `rotate3d(0, 1, 0, ${value}deg)`
     )
 
+    const reduceMotion = useMediaQuery("(prefers-reduced-motion: reduce)")
+    const isNarrow = useMediaQuery("(max-width: 768px)")
+    const rotationSpeed = reduceMotion ? 0 : isNarrow ? 0.02 : 0.05
     useEffect(() => {
-      if (!isCarouselActive) return
+      if (!isCarouselActive || rotationSpeed === 0) return
       let animationFrame: number
       const animate = () => {
-        rotation.set(rotation.get() + 0.05)
+        rotation.set(rotation.get() + rotationSpeed)
         controls.set({ rotateY: rotation.get() })
         animationFrame = requestAnimationFrame(animate)
       }
       animationFrame = requestAnimationFrame(animate)
       return () => animationFrame && cancelAnimationFrame(animationFrame)
-    }, [isCarouselActive, rotation, controls])
+    }, [isCarouselActive, rotation, controls, rotationSpeed])
 
     return (
       <div

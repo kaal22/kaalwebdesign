@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
   body {
     @apply bg-[#000000] text-kaal-text font-body antialiased;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
   ::selection {
@@ -193,4 +197,24 @@
   border-radius: 50%;
   animation: float 8s ease-in-out infinite;
   animation-play-state: paused;
+}
+
+/* Reduce motion: disable or simplify animations for accessibility and mobile */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse,
+  .animate-ping {
+    animation: none;
+  }
+  .flame-border {
+    animation: none;
+    background-position: 0% 50%;
+  }
+  .grid-line {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 0.15;
+  }
+  .floating-element {
+    animation: none;
+  }
 }
