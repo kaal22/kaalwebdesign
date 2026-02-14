@@ -10,7 +10,6 @@ const Problem: React.FC = () => {
     offset: ["start end", "end start"]
   });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.3]);
 
   const problems = [
@@ -36,10 +35,9 @@ const Problem: React.FC = () => {
       ref={ref}
       className="relative py-32 px-6 md:px-12 bg-transparent overflow-hidden min-h-screen flex items-center"
     >
-      {/* Parallax Background Layer - masked so glow fades out smoothly at bottom */}
+      {/* Background glow - fixed (no parallax) so mask fade doesn't shift on scroll */}
       <motion.div 
         style={{ 
-          y: backgroundY, 
           opacity,
           maskImage: 'linear-gradient(to bottom, black 45%, transparent 85%)',
           WebkitMaskImage: 'linear-gradient(to bottom, black 45%, transparent 85%)',

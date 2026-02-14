@@ -115,19 +115,10 @@ const ContactForm: React.FC = () => {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest text-kaal-muted font-bold pl-1">Budget Range</label>
-                    <select className="w-full bg-transparent border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-kaal-accent/50 focus:border-kaal-accent transition-all appearance-none cursor-pointer">
-                      <option>$5k — $10k</option>
-                      <option>$10k — $25k</option>
-                      <option>$25k — $50k</option>
-                      <option>$50k+</option>
-                    </select>
-                  </div>
-                  <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-kaal-muted font-bold pl-1">Project Details</label>
                     <textarea 
                       required 
-                      rows={4}
+                      rows={10}
                       placeholder="Tell me about your project..."
                       className="w-full bg-transparent border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-kaal-accent/50 focus:border-kaal-accent transition-all" 
                     ></textarea>
