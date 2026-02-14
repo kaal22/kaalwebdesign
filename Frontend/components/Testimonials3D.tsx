@@ -14,7 +14,7 @@ const Testimonials3D: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold">
             Engineered with <span className="text-kaal-accent">Intention</span>.
           </h2>
           <p className="text-kaal-muted text-lg font-body mt-4">

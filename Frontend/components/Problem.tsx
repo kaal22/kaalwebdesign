@@ -62,7 +62,7 @@ const Problem: React.FC = () => {
           >
             Most websites look fine.<br />
             <motion.span 
-              className="text-kaal-accent italic"
+              className="text-kaal-accent"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}

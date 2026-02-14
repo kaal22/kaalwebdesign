@@ -66,7 +66,7 @@ const IntentionalSystemSection: React.FC = () => {
           className="relative z-20 mb-16 md:mb-24"
         >
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight">
-            Design Should Feel <span className="text-kaal-accent italic">Intentional</span>.
+            Design Should Feel <span className="text-kaal-accent">Intentional</span>.
           </h2>
           <p className="text-kaal-muted text-xl font-body mt-6 max-w-2xl">
             Every element should earn its place.
