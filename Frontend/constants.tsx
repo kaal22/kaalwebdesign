@@ -130,22 +130,22 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const SERVICES: Service[] = [
   {
-    id: 'launch-sprint',
-    title: 'Launch Sprint',
-    description: 'For startups that need immediate impact. High-performance site. Delivered fast. Built to convert. Delivery: 2–3 weeks.',
-    price: 'Starting from £X'
-  },
-  {
-    id: 'redesign-reposition',
-    title: 'Redesign & Reposition',
-    description: 'For brands ready to level up. Sharper positioning. Stronger visuals. Smarter UX.',
-    price: 'Starting from £X'
-  },
-  {
-    id: 'design-partner',
-    title: 'Design Partner',
-    description: 'Ongoing collaboration. Continuous optimisation. Monthly design support. Conversion improvements. Strategic evolution.',
-    price: 'Retainer model'
+    id: 'digital-gravity',
+    title: 'Digital Gravity — Founding Website Experience',
+    description: 'For founders who want more than a "nice-looking site." A strategy-led, fully custom website designed to attract attention — and convert it with precision.',
+    price: '£1,800 – £2,200',
+    tagline: 'Built independently. Delivered intentionally.',
+    features: [
+      'Positioning & structure refinement',
+      'Homepage narrative architecture',
+      '5–7 fully custom pages',
+      'Responsive design across all devices',
+      'Conversion-focused layout & hierarchy',
+      'Performance optimisation',
+      'Contact form integration',
+      'Basic SEO setup',
+      '2 structured revision rounds'
+    ]
   }
 ];
 

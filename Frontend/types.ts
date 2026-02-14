@@ -28,6 +28,8 @@ export interface Service {
   title: string;
   description: string;
   price?: string;
+  features?: string[];
+  tagline?: string;
 }
 
 export interface ProcessStep {
