@@ -16,80 +16,72 @@ const Services: React.FC = () => {
   const service = SERVICES[0];
 
   return (
-    <section 
+    <section
       ref={ref}
-      id="services" 
-      className="relative py-32 px-6 md:px-12 bg-transparent overflow-hidden min-h-screen flex items-center"
+      id="services"
+      className="relative py-24 md:py-32 px-6 md:px-12 bg-transparent overflow-hidden flex items-center"
     >
-      {/* Parallax Background Elements */}
-      <motion.div 
-        style={{ y: backgroundY, opacity: backgroundOpacity }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none"
-      />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-kaal-accent/[0.03] rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-md mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
         >
-          <h2 className="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tight">
             Ways to <span className="text-kaal-accent italic">Elevate</span>.
           </h2>
-          <p className="text-kaal-muted text-xl max-w-2xl mx-auto leading-relaxed mb-4">
+          <p className="text-kaal-muted text-lg mt-4">
             One focused way to work together.
-          </p>
-          <p className="text-kaal-muted text-lg">
-            Clear scope. Clear timeline. Clear outcomes.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-          className="glass p-8 md:p-12 rounded-3xl border border-white/10 z-[3]"
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
+          className="rounded-2xl border border-white/10 bg-black/40 backdrop-blur-sm p-6 md:p-8"
         >
-          <h3 className="text-2xl md:text-3xl font-display font-bold mb-6 text-kaal-accent">
+          <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">
             {service.title}
           </h3>
-          <p className="text-kaal-muted font-body leading-relaxed mb-10 text-lg">
+          <p className="text-kaal-muted font-body text-base md:text-lg leading-relaxed mb-8">
             {service.description}
           </p>
 
-          <h4 className="text-sm uppercase tracking-widest text-kaal-muted font-bold mb-6">
-            What You Get
+          <h4 className="text-xs uppercase tracking-widest text-kaal-muted font-bold mb-4">
+            What's Included
           </h4>
-          <ul className="space-y-3 mb-10">
+          <ul className="space-y-3 mb-8">
             {service.features?.map((feature, idx) => (
-              <li key={idx} className="flex items-start gap-3 text-kaal-text font-body">
-                <Check size={18} className="text-kaal-accent shrink-0 mt-0.5" />
+              <li key={idx} className="flex items-center gap-3 text-white/90 font-body text-base">
+                <Check size={18} className="text-kaal-accent shrink-0" />
                 <span>{feature}</span>
               </li>
             ))}
           </ul>
 
-          {service.tagline && (
-            <p className="text-white/90 font-body italic mb-10 border-l-2 border-kaal-accent pl-6">
-              {service.tagline}
-            </p>
-          )}
-
-          <div className="pt-8 border-t border-kaal-border">
+          <div className="pt-6 border-t border-white/10">
             <p className="text-xs uppercase tracking-widest text-kaal-muted font-bold mb-2">
               Investment
             </p>
-            <p className="text-kaal-accent font-display font-bold text-2xl md:text-3xl mb-8">
+            <p className="text-kaal-accent font-display font-bold text-2xl md:text-3xl">
               {service.price}
             </p>
+            {service.delivery && (
+              <p className="text-kaal-muted text-base font-body mt-2">
+                {service.delivery}
+              </p>
+            )}
             <a
               href="#contact"
-              className="w-full py-4 rounded-xl text-center block font-bold border border-kaal-border hover:bg-kaal-accent hover:text-white hover:border-transparent transition-all"
+              className="mt-6 w-full py-4 rounded-xl text-center block font-bold text-base border border-kaal-accent/50 bg-kaal-accent/10 text-white hover:bg-kaal-accent hover:border-kaal-accent transition-all"
             >
-              Inquire Now
+              Start Your Project
             </a>
           </div>
         </motion.div>

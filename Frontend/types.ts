@@ -35,6 +35,7 @@ export interface Service {
   title: string;
   description: string;
   price?: string;
+  delivery?: string;
   features?: string[];
   tagline?: string;
 }
