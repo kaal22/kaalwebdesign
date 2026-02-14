@@ -14,7 +14,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-12 bg-transparent relative overflow-hidden">
+    <section id="contact" className="py-28 md:py-40 px-6 md:px-12 bg-transparent relative overflow-hidden">
       {/* Decorative Blur */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-kaal-accent opacity-5 blur-[120px] rounded-full pointer-events-none" />
 

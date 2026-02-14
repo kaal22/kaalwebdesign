@@ -53,7 +53,7 @@ const IntentionalSystemSection: React.FC = () => {
   return (
     <section
       id="work"
-      className="relative w-full min-h-screen bg-transparent overflow-hidden py-24 px-6 md:px-12"
+      className="relative w-full min-h-screen bg-transparent overflow-hidden py-28 md:py-40 px-6 md:px-12"
       ref={containerRef}
       onClick={handleContainerClick}
     >

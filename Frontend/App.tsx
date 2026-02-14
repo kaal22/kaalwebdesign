@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Problem from './components/Problem';
 import IntentionalSystemSection from './components/IntentionalSystemSection';
+import BlazingFastSection from './components/BlazingFastSection';
 import ProcessTimeline from './components/ProcessTimeline';
 import Services from './components/Services';
 import Testimonials3D from './components/Testimonials3D';
@@ -60,6 +61,9 @@ const App: React.FC = () => {
         <StoryChapter chapterNumber={2} title="The Work" showTitle={false}>
           <IntentionalSystemSection />
         </StoryChapter>
+
+        {/* Chapter 3: Blazing Fast */}
+        <BlazingFastSection />
 
         {/* Chapter 4: The Process */}
         <StoryChapter chapterNumber={4} title="The Process" showTitle={false}>

@@ -33,7 +33,7 @@ const Problem: React.FC = () => {
   return (
     <section 
       ref={ref}
-      className="relative py-32 px-6 md:px-12 bg-transparent overflow-hidden min-h-screen flex items-center"
+      className="relative py-28 md:py-40 px-6 md:px-12 bg-transparent overflow-hidden min-h-screen flex items-center"
     >
       {/* Background glow - fixed (no parallax) so mask fade doesn't shift on scroll */}
       <motion.div 

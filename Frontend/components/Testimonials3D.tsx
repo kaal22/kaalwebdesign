@@ -5,7 +5,7 @@ import { PRINCIPLES } from '../constants';
 
 const Testimonials3D: React.FC = () => {
   return (
-    <section className="py-24 px-6 md:px-12 bg-transparent overflow-hidden relative">
+    <section className="py-28 md:py-40 px-6 md:px-12 bg-transparent overflow-hidden relative">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-12 relative z-10"

@@ -19,7 +19,7 @@ const Services: React.FC = () => {
     <section
       ref={ref}
       id="services"
-      className="relative py-24 md:py-32 px-6 md:px-12 bg-transparent overflow-hidden flex items-center"
+      className="relative py-28 md:py-40 px-6 md:px-12 bg-transparent overflow-hidden flex items-center"
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-kaal-accent/[0.03] rounded-full blur-[100px] pointer-events-none" />
 

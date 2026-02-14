@@ -25,6 +25,23 @@
   .text-gradient-accent {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-kaal-accent to-orange-400;
   }
+
+  /* Flame border: gradient flows around the edge, no spinning rectangle */
+  .flame-border {
+    background: linear-gradient(
+      90deg,
+      #ff6b00,
+      #ff4500,
+      #ff8c00,
+      #ff6b1a,
+      #ff4500,
+      #ff6b00,
+      #ff8c00,
+      #ff6b00
+    );
+    background-size: 400% 100%;
+    animation: flame-flow 6s linear infinite;
+  }
 }
 
 /* Custom Scrollbar */
@@ -43,6 +60,15 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #FF4D1A;
+}
+
+@keyframes flame-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
 }
 
 /* Orbital Timeline Animations */

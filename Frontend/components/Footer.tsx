@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative py-20 px-6 md:px-12 bg-transparent border-t border-kaal-border overflow-hidden">
+    <footer className="relative py-24 md:py-28 px-6 md:px-12 bg-transparent border-t border-kaal-border overflow-hidden">
       {/* Massive Cinematic Text Background */}
       <div className="absolute bottom-0 left-0 w-full leading-none select-none pointer-events-none opacity-5">
         <h1 className="text-[20vw] font-display font-bold text-center text-white">KAAL</h1>

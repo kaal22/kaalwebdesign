@@ -17,7 +17,7 @@ const ProcessTimeline: React.FC = () => {
     <section 
       ref={ref}
       id="process" 
-      className="relative py-24 px-6 md:px-12 bg-transparent overflow-hidden min-h-screen flex items-center"
+      className="relative py-28 md:py-40 px-6 md:px-12 bg-transparent overflow-hidden min-h-screen flex items-center"
     >
       {/* Parallax Background */}
       <motion.div 
