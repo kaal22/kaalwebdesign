@@ -100,9 +100,9 @@ const InkSwirl: React.FC<InkSwirlProps> = ({ className = '' }) => {
         particle.x += particle.vx;
         particle.y += particle.vy;
         
-        // Gradual fade out for long trails
+        // Gradual fade out for long trails (×0.25 for dim trails)
         const lifeRatio = particle.life / particle.maxLife;
-        const alpha = (1 - Math.pow(lifeRatio, 0.8)) * particle.brightness;
+        const alpha = (1 - Math.pow(lifeRatio, 0.8)) * particle.brightness * 0.25;
         
         if (alpha <= 0) return false;
 
